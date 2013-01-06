@@ -28,4 +28,4 @@ Licensed under Apache 2.0. // Note that this may change as I prefer the MIT lice
 Flawless-Semantics was created by Sean Steindl and has been heavily influenced by a range of projects including Semantic.gs, Zen grids, Neat, Flawless, and Centage.
 
 #Acknowledgements
-The Semantic Grid System was built by [Tyler Tate](http://twitter.com/tylertate/) at [TwigKit](http://twigkit.com/) and has had various contributions. For more see the [project](http://github.com/twigkit/semantic.gs).
+The Semantic Grid System was built by [Tyler Tate](http://twitter.com/tylertate/) at [TwigKit](http://twigkit.com/) and has had various contributions. For more see  [semantic.gs](http://github.com/twigkit/semantic.gs).
