@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<title>Grid System | showoff</title>
+	<title>Flawless-Semantics | showoff</title>
 
     <!-- Stylesheets -->
 	<link rel="stylesheet" href="grid-showoff.less" type="text/less" media="screen" />
@@ -15,11 +15,11 @@
 </head>
 <body>
     <header id="top">
-<h1>Grid Examples</h1>
+<h1><a href="https://github.com/laughingwithu/flawless-semantics-grid">Flawless-Semantics</a></h1>
 </header>
 <div id="page">
 
-<h3>Basic</h3>
+<h3 class="show">Basic</h3>
 
 <section id="basic">
 <code>.row(12);</code>
@@ -32,7 +32,7 @@
 </section>
 
 
-<h3>Multiple rows</h3>
+<h3 class="show">Multiple rows</h3>
 
 <section id="Multiple-rows">
 <code>.row(12);</code>
@@ -77,7 +77,16 @@
   </div>
 </section>
 
-<h3>Nesting column</h3>
+<h3 class="show">Shifting column</h3>
+
+<section id="Shifts">
+  <code>.row(12);</code>
+  <div class="alpha">
+    <code>.column(6);<br>
+      .push(3,12);</code>
+  </div>
+</section>
+<h3 class="show">Nesting column</h3>
 
 <section id="nesting">
 <code>.row(12)</code>
@@ -104,17 +113,7 @@
   </div>
 </section>
 
-<h3>Shifting column</h3>
-
-<section id="Shifts">
-  <code>.row(12);</code>
-  <div class="alpha">
-    <code>.column(6);<br>
-      .push(3,12);</code>
-  </div>
-</section>
-
-<h3>Automatic rows</h3>
+<h3 class="show">Automatic rows</h3>
 <div class="code">
   <code>.row(12);</code>
 </div>
@@ -162,9 +161,7 @@
 
 </div>
 <footer>
-<h3>And that's all folks!<h3/>
+	<h3 class="show">And that's all folks!<h3/>
 </footer>
-
 </body>
-
 </html>
