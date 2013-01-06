@@ -1,21 +1,21 @@
 #About
 Based on the well known semantic.gs by Tyler Tate, Flawless-Semantics shares many of the same goals that semantic.gs has. It allows for:
-* column, gutter widths and the number of columns to be set, 
-* switching between pixel and percentage based layouts
-* responsive fixed alayouts, 
+* column, gutter widths and the number of columns to be set; 
+* switching between pixel and percentage based layouts;
+* responsive fixed alayouts,
 all without any unsemantic .grid_x classes in your markup. 
 
-Flawless-Semantics was built originally to address several issues that I had with semantic.gs and while some of the changes were compatible with that project, several changes resulted in a grid which was not compatible with semantic.gs. I will continue to contribute to semantic.gs and will work to get both of these aproaches compatible with each other.
+Flawless-Semantics was originally built to address several issues that I had with semantic.gs and while some of the changes were compatible with that project, several changes resulted in a grid which was not compatible with semantic.gs. I will continue to contribute to semantic.gs and will work to get both of these aproaches compatible with each other.
 
 #Differences
 The most notable difference is the fact that Flawless-Semantics uses a column - gutter - column approach rather than a gutter - column - approach. This solves the nesting problems I was having with Semantic.gs and also the fact that the outer most gutters where half the width of the inner gutters.
 
 Other differences include:
-* mixin to create equal height columns
-* mixin to specify the width, min-width, and max-width of a container
-* modification of .column mixin to allow for an omega attribute
-* feature to allow for automatic rows and columns
-* removal of padding as an option to be used as a gutter // this may be added in the future though it won't be implemented the same way that it is in semantic.gs
+* mixin to create equal height columns;
+* mixin to specify the width, min-width, and max-width of a container;
+* modification of .column mixin to allow for an omega attribute;
+* feature to allow for automatic rows and columns;
+* removal of padding as an option to be used as a gutter // this may be added in the future though it won't be implemented the same way that it is in semantic.gs;
 * support for less only at this time but this may change in the future.
 
 #Issues
