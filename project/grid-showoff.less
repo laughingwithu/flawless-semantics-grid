@@ -1,0 +1,125 @@
+@import './stylesheets/reset.css';
+@import './stylesheets/demo.less';
+@import './stylesheets/grid.less';
+
+
+//////////
+// GRID //
+//////////
+
+// Specify the number of column and set column and gutter widths
+@column: 12;
+@column-width: 60;
+@gutter-width: 20;
+
+// Uncomment the definition below for a percentage-based layout
+@total-width: 100%;
+
+////////////
+// LAYOUT //
+////////////
+#page {
+.widths(@width, @min-width, @max-width);
+	margin: 2em auto;
+}
+
+// header
+header#top {
+	.column(12,12);
+}
+
+// demo
+#basic {
+	.row(12);
+	.first {
+		.column(6);
+	}
+	.second {
+		.column(6);
+	}
+}
+
+#Multiple-rows {
+	.row(12);	
+	.alpha {
+		.column(1);
+	}
+	.beta {
+		.column(11,12,omega);
+	}
+	.gamma {
+		.column(2);
+	}
+	.delta {
+		.column(10,12,omega);
+	}
+	.epsilon {
+		.column(3);
+	}
+	.zeta {
+		.column(9,12,omega);
+	}
+	.eta {
+		.column(4);
+	}
+	.theta {
+		.column(8,12,omega);
+	}
+	.iota {
+		.column(5);
+	}
+	.kappa {
+		.column(7,12,omega);
+	}
+	.lambda {
+		.column(4);
+	}
+	.mu {
+		.column(2);
+	}
+	.nu {
+		.column(6,12,omega);
+	}
+}
+
+#nesting {
+	.row(12);
+	.wrapper {
+		.col_equal_wrap();
+		.nested1 {
+			.column(2);
+			}
+		.nested2 {
+			.column(2);
+			.col_equal();
+			}
+		.nested3 {
+			.column(8);
+			.col_equal();
+			aside {
+				.column(4,8);
+			}
+			article {
+				.column(4,8);
+			}
+		}
+	}
+}
+
+#Shifts {
+	.row(12);
+	.alpha {
+		.column(6);
+		.push(3,12);
+	}
+}
+
+#auto {
+	.row(12);
+	.box {
+		.column(3,12,auto);
+	}
+}
+footer {
+	.column(12);
+}
