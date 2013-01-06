@@ -15,6 +15,7 @@ Other differences include:
 * mixin to specify the width, min-width, and max-width of a container;
 * modification of .column mixin to allow for an omega attribute;
 * feature to allow for automatic rows and columns;
+* borders and padding don't affect grid;
 * removal of padding as an option to be used as a gutter // this may be added in the future though it won't be implemented the same way that it is in semantic.gs;
 * support for less only at this time but this may change in the future.
 
