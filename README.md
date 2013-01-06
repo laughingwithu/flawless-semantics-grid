@@ -1,5 +1,5 @@
 #About
-Based on the well known semantic.gs by Tyler Tate this Flawless-Semantics shares many of the same goals that semantic.gs has. It allows for:
+Based on the well known semantic.gs by Tyler Tate, Flawless-Semantics shares many of the same goals that semantic.gs has. It allows for:
 * column, gutter widths and the number of columns to be set, 
 * switching between pixel and percentage based layouts
 * responsive fixed alayouts, 
