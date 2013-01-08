@@ -7,6 +7,8 @@ all without any unsemantic .grid_x classes in your markup.
 
 Starting out as a project to address several issues that I had with semantic.gs, Flawless Semantics is no currently not compatible with that project, and I have decided to create its own repository. I will continue to contribute to semantic.gs and will work to get both of these aproaches compatible with each other.
 
+Go check out the [live examples here](http://laughingwithu.github.com/flawless-semantics-grid/).
+
 #Differences
 The most notable difference is the fact that Flawless-Semantics uses a column - gutter - column approach rather than a gutter - column - gutter approach. This solves the nesting problems I was having with Semantic.gs and also the fact that the outer most gutters where half the width of the inner gutters.
 
