@@ -1,9 +1,14 @@
-//Flawless-Semantics adapted by Sean Steindl from the Semantic.gs
+// Flawless-Semantics adapted by Sean Steindl from the Semantic.gs
+
+// Variables which are can be overriden.
+@columns: 12; // specifies the number of columns in the grid: Default = 12
+@column-width: 60; // this formula works out the width of columns in the grid. Default = 30
+@gutter-width: 20; // The gap between elements in the grid (any css unit) Default = 60
 ///////////
 // GRID SPECIFIC CALCULATIONS
 //////////
 
-// Utility variable - you should never need to modify this (note the one less gutter than in the original grid)
+// Utility variable - you should never need to modify this (note the one less gutter)
 @gridsystem-width: (@column-width*@columns) + (@gutter-width*(@columns - 1))* 1px;
 
 // Set @total-width to 100% for a fluid layout

@@ -1,10 +1,8 @@
 ////////////////////////
 // Flawless Semantics //  by Sean Steindl aka laughingwithu
 ///////////////////////
-@import "grid/useful-mixins.less"; // loads several useful mixins and calculations required by semantic.gs
-@import "grid/flawless-grid.less"; // loads the grid 
 
-// Variables which are can be overriden.
+// Defaults that you can freely override. @gutter-method can be either 'margin' or 'padding'.
 @columns: 12; // specifies the number of columns in the grid: Default = 12
 @column-width: 60; // this formula works out the width of columns in the grid. Default = 30
 @gutter-width: 20; // The gap between elements in the grid (any css unit) Default = 60
@@ -13,3 +11,10 @@
 @min-width: 400px; // minimum width of the grid (any css unit) Default = 400px
 @max-width: @gridsystem-width; // this is the maximum width of the grid (any css unit) Default = @gridsystem-width. NOTE when @total-width is set to 100% this can be used to constrain the grid to any size.
 @width:95%; // Just ensures the grid never gets smaller than X% and fits nicely at small screen sizes. Default = 95%
+
+///////////////////
+// LOAD THE GRID //
+///////////////////
+@import "grid/useful-mixins.less"; // loads several useful mixins and calculations required by semantic.gs
+
+@import "grid/flawless-grid.less"; // loads the grid 
