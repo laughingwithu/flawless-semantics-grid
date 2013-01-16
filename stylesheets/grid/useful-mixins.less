@@ -1,19 +1,4 @@
 // USEFUL LESS MIXINS for Flawless Semantics
-///////////////////////////
-// GRID MIXIN // Sean Steindl aka http://github.com/laughingwithu
-/////////////////////////
-
-// Variables specific to the .widths() mixin
-@min-width: 400px; // minimum width of the grid (any css unit) Default = 400px
-@max-width: @gridsystem-width; // this is the maximum width of the grid (any css unit) Default = @gridsystem-width. NOTE when @total-width is set to 100% this can be used to constrain the grid to any size.
-
-// a width mixin, allows an element (usually body or some other wrapper) to become a grid container with the values from above or as specified by the user
-.widths(@min-width:@min-width, @max-width:@max-width) {
-  min-width: @min-width;
-  max-width: @max-width;
-  .clearfix();
-}
-
 ////////////////////
 // MICRO CLEARFIX // http://nicolasgallagher.com/micro-clearfix-hack/
 ////////////////////
@@ -34,7 +19,7 @@
 ///////////////////////////
 // EQUAL HEIGHT COLUMNS // Sean Steindl aka http://github.com/laughingwithu
 ///////////////////////// 
-// wrap parent of equal height column
+// wrap parent of equal height column this should be a row element
 .col_equal_wrap() {
 	overflow: hidden; 
     display:block;

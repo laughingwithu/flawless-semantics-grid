@@ -1,7 +1,4 @@
-@import 'stylesheets/reset.css';
-@import 'stylesheets/demo.less';
-@import 'stylesheets/grid.less';
-
+@import './stylesheets/grid.less';
 
 //////////
 // GRID //
@@ -13,24 +10,28 @@
 @gutter-width: 20;
 
 // Uncomment the definition below for a percentage-based layout
-@total-width: 100%;
+// @total-width: 100%;
+// @p-total-width: 100%;
 
 ////////////
 // LAYOUT //
 ////////////
+body {
+	width:940px;
+	margin: 20px auto;
+	border: 1px dashed #888;
+}
+
 #page {
-.widths(@min-width, @max-width);
-	margin: 2em auto;
+	.grid();
+	
 }
 
-// header
-header#top {
-	.column(12,12);
+#About {
+	padding: 0 20px;
 }
 
-// demo
-#basic {
-	.row(12);
+#Basic {
 	.first {
 		.column(6);
 	}
@@ -40,59 +41,65 @@ header#top {
 }
 
 #Multiple-rows {
-	.row(12);	
+		.alpha {
+			.column(1);
+		}
+		.beta {
+			.column(11,12);
+		}
+		.gamma {
+			.column(2);
+		}
+		.delta {
+			.column(10,12);
+		}
+		.epsilon {
+			.column(3);
+		}
+		.zeta {
+			.column(9,12);
+		}
+		.eta {
+			.column(4);
+		}
+		.theta {
+			.column(8,12);
+		}
+		.iota {
+			.column(5);
+		}
+		.kappa {
+			.column(7,12);
+		}
+		.lambda {
+			.column(4);
+		}
+		.mu {
+		.column(2);
+		}
+		.nu {
+			.column(6,12);
+		}
+}
+
+#Shifts {
 	.alpha {
-		.column(1);
-	}
-	.beta {
-		.column(11,12,omega);
-	}
-	.gamma {
-		.column(2);
-	}
-	.delta {
-		.column(10,12,omega);
-	}
-	.epsilon {
-		.column(3);
-	}
-	.zeta {
-		.column(9,12,omega);
-	}
-	.eta {
-		.column(4);
-	}
-	.theta {
-		.column(8,12,omega);
-	}
-	.iota {
-		.column(5);
-	}
-	.kappa {
-		.column(7,12,omega);
-	}
-	.lambda {
-		.column(4);
-	}
-	.mu {
-		.column(2);
-	}
-	.nu {
-		.column(6,12,omega);
+		.column(6);
+		.push(3,12);
 	}
 }
 
 #nesting {
-	.row(12);
-	.wrapper {
+	.first-row {
+		.row(12);
 		.col_equal_wrap();
 		.nested1 {
-			.column(2);
-			}
+			.column(2)
+		}
 		.nested2 {
 			.column(2);
 			.col_equal();
-			}
+		}
 		.nested3 {
 			.column(8);
 			.col_equal();
@@ -106,21 +113,26 @@ header#top {
 	}
 }
 
-#Shifts {
-	.row(12);
-	.alpha {
-		.column(6);
-		.push(3,12);
-	}
+section {
+	.column(12);	
 }
 
-#auto {
+.first-row {
 	.row(12);
-	.box {
-		.column(3,12,auto);
-	}
 }
+	
+.second-row {
+	.row(8);
+}
+
+.intro {
+	.column(12);	
+}
+	
+.box {
+	.column(3,12);
+}
+
 footer {
 	.column(12);
-	text-align:center;
 }

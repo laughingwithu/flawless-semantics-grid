@@ -9,8 +9,13 @@
 
 // Variables specific to the .widths() mixin
 @min-width: 400px; // minimum width of the grid (any css unit) Default = 400px
-@max-width: @gridsystem-width; // this is the maximum width of the grid (any css unit) Default = @gridsystem-width. NOTE when @total-width is set to 100% this can be used to constrain the grid to any size.
-@width:95%; // Just ensures the grid never gets smaller than X% and fits nicely at small screen sizes. Default = 95%
+@max-width: @p-total-width; // I reccomend that this setting is left as is
+
+// Vertical rythm variables
+
+@rhythmic-unit: 1.5em;
+@rhythmic-fontsize: 14px;
+
 
 ///////////////////
 // LOAD THE GRID //
@@ -18,3 +23,11 @@
 @import "grid/useful-mixins.less"; // loads several useful mixins and calculations required by semantic.gs
 
 @import "grid/flawless-grid.less"; // loads the grid 
+
+@import "grid/rhythm.less"; // import the vertical rythm grid
+
+@import 'reset.css';
+@import 'demo.less';
+@import 'typography.less'; // import typography styles
+
+

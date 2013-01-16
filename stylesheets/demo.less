@@ -1,100 +1,55 @@
-h1 {
-	font-family: Georgia;
-	font-size: 2em;
-	padding: 1em 0;
-	color: #666;
-	text-align:center;
-	a {
-			color: #666;
-			text-decoration: underline;
-		}
-}
-
-h2 {
-	font-family: Georgia;
-	font-size: 1.5em;
-	padding: 5.25em 0;
-	color: #fff;
-	background-color: #3E97D1;
-	text-align: center;
-}
-
-h3 {
-	color: #fff;
-	margin: 1em 0;
-	text-align: center;
-	font-weight: bold;
-	font-size: 1.1em;
-	&.show {
-		color: #666;
-	}
-}
-
-ul#boxes li {
-	font-family: Georgia;
-	font-size: 1.33em;
-	padding: 2.5em 0;
-	color: #fff;
-	background-color: #3E97D1;
-	text-align: center;
-}
-
 code {
 	display:block;
-	color: #666;
-
+	color:#fff;	
 }
 
-p {
-	color: #666;
-}
-
-#maincolumn section, #sidebar {
-	background-color: #fff;
-	padding:0;
-}
-body {
-    line-height: 1.5em;
-}
-#page {
-	border: 1px dashed #333;
-}
-
-section {
-    background-color: #D5EEFB;
-    text-align: center;
-	padding: 1em 0;
-	div {
-		color:#fff;
-		min-height: 7.5em;
-		line-height: 1.618em;
-		text-align: left;
+#Basic {
+	.first, .second {
 		background-color: #3E97D1;
-		margin-bottom: 2em;
-		code {
-			color: #fff;
+	}
+}
+
+#Multiple-rows {
+	.alpha, .beta, .gamma, .delta, .epsilon, .zeta, .eta, .theta, .iota, .kappa, .lambda, .mu, .nu {
+			background-color: #3E97D1;
+			margin-bottom: 20px;
+	}
+}
+
+
+#Shifts {
+	.alpha {
+			background-color: #3E97D1;
+	}
+}
+
+#nesting {
+	.first-row {
+		.nested1 {
+			background-color: #3E97D1;
 		}
-		aside, article {
-			background-color: #0A67A3;
-			min-height: 6.472em;
-			line-height: 1.618em;
-			padding: 1.5em 0;
-			text-align: left;
-			margin-bottom: 2em;
+		.nested2 {
+			background-color: #3E97D1;
+		}
+		.nested3 {
+			background-color: #3E97D1;
+			aside {
+				background-color: #0A67A3;
+			}
+			article {
+				background-color: #0A67A3;
+			}
 		}
 	}
 }
-#nesting {
-	.wrapper {
-		background-color:#D5EEFB;
-		.nested1 {
-			background-color: #3E97D1;
-			}
-		.nested2 {
-			background-color: #3E97D1;
-			}
-		.nested3 {
-			background-color: #3E97D1;
-		}
+
+.box {
+	background-color: #3E97D1;
+	margin-bottom: 20px;
+}
+
+.intro {
+	code {
+		color: #666;
 	}
 }
