@@ -3,60 +3,83 @@
 // GRID SPECIFIC CALCULATIONS
 //////////
 
-// Utility variable - you should never need to modify this (note the one less gutter than in the original grid)
-@gridsystem-width: (@column-width*@columns) + (@gutter-width*(@columns - 1))* 1px;
+// Utility variable - you should never need to modify this
+@gridsystem-width: (@column-width*@columns) + (@gutter-width*@columns) * 1px;
 
 // Set @total-width to 100% for a fluid layout
 @total-width: @gridsystem-width;
 
+// Utility variable for the print layout - you should never need to modify this (note the one less gutter than in the original grid)
+@p-gridsystem-width: (@column-width*@columns) + (@gutter-width*(@columns - 1))* 1px;
+
+// Set @total-width to 100% for a fluid layout
+@p-total-width: @p-gridsystem-width;
+
 // gutter widths for columns
+@p-column-gutter-width: @p-total-width*((@gutter-width)/@p-gridsystem-width);
+
 @column-gutter-width: @total-width*((@gutter-width)/@gridsystem-width);
+
+//////////
+// Grid //
+//////////
+.grid(){
+	.row(@columns);
+}
+
+/*  For use in the original grids
+.grid(){
+	@calculated-row-width: (@total-width*((@gutter-width + @gridsystem-width))/@gridsystem-width);
+	min-width: @min-width;
+	max-width: @calculated-row-width;
+	display: block;
+	.clearfix;
+} */
 
 //////////
 // ROWS //
 //////////
 // Margin-based rows
 .row(@columns:@columns) {
-	@calculated-row-width: (@total-width*((@gutter-width + @gridsystem-width)-@gutter-width)/@gridsystem-width);
-	width: @calculated-row-width;
+	min-width: @min-width;
 	display: block;
 	.clearfix;
+	.mixin(@columns:@columns)  when (ispixel(@total-width))  {
+		@calculated-row-width: (@total-width*@gridsystem-width)/@gridsystem-width;
+		width: @calculated-row-width; // Need to test this more
+		}
+	.mixin(@columns:@columns)  when (ispercentage(@total-width))  {
+		@calculated-row-width: (@total-width*@gridsystem-width)/@gridsystem-width;
+		@calculated-row-width: @total-width*((@gutter-width + @gridsystem-width)/@gridsystem-width);
+		width: @calculated-row-width; // Need to test this more
+	}
+	.mixin(@columns);
 }
 
 /////////////
 // COLUMNS //
 /////////////
 // column - specified width
-.column(@x,@columns:@columns,@omega:null) {
-	@calculated-column-width: @total-width*((((@gutter-width+@column-width)*@x)-@gutter-width) / @gridsystem-width);
+.column(@x,@columns:@columns) {
 		display: inline;
 		float: left;
-		width: @calculated-column-width;
 		margin-left:0;
-		margin-right: @column-gutter-width;
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;
-		&:last-child{ // make sure the last child's gutters are removed
-			margin-right: 0;
-		}
-		.single-col(@x,@columns) when (@x=@columns)	{ // check for a single column and remove gutters accordingly
-			margin-right: 0;
-		}
-	.single-col(@x,@columns) {}
-	.single-col(@x,@columns);
-		.omega(@x:@x,@columns:@columns,auto) {
-			@nth: @columns / @x;
-			@nselector:~"@{nth}n+0";  // less.js v 1.4 may remove the need for this
-			&:nth-child(@nselector) {
-				margin-right: 0;
-				}
-			}
-		.omega(@x,@columns,omega){
-			margin-right: 0;
-			}
-		.omega(@x,@columns,null) {}
-	.omega(@x,@columns,@omega);
+	.mixin(@x,@columns:@columns)  when (ispixel(@total-width))  {
+		@calculated-column-width: @p-total-width*((((@gutter-width+@column-width)*@x)-@gutter-width) / @p-gridsystem-width);
+		width: @calculated-column-width; // Need to test this more
+		margin-right: @p-column-gutter-width;
+	}
+	// This needs to be tested NOWWWWWWWWWWWWWWWWWWWWWWWWWWW
+	.mixin(@x,@columns:@columns)  when (ispercentage(@total-width))  {
+		@calculated-column-width: @total-width*((((@gutter-width+@column-width)*@x)-@gutter-width) / @gridsystem-width);
+	@calculated-column-width: @total-width*((((@gutter-width+@column-width)*@x)-@gutter-width) / @gridsystem-width);
+		width: @calculated-column-width; // Need to test this more
+		margin-right: @column-gutter-width;
+	}
+	.mixin(@x,@columns);
 }
 
 /////////////////
@@ -64,8 +87,17 @@
 /////////////////
 
 .push(@offset:1,@columns:@columns)  {
-	@calculated-column-width: @total-width*((((@gutter-width+@column-width)*@offset)-@gutter-width) / @gridsystem-width);
-	@offset-amount:@calculated-column-width+@column-gutter-width;
-	padding-left: 0;
-	margin-left: @offset-amount;
+	.mixin(@offset:1,@columns:@columns)  when (ispixel(@total-width))  {
+		@calculated-column-width: @p-total-width*((((@gutter-width+@column-width)*@offset)-@gutter-width) / @p-gridsystem-width);
+		@offset-amount:@calculated-column-width+(@column-gutter-width);
+		padding-right: 0;
+		margin-left: @offset-amount;
+	}
+	.mixin(@offset:1,@columns:@columns)  when (ispercentage(@total-width))  {
+		@calculated-column-width: @total-width*((((@gutter-width+@column-width)*@offset)-@gutter-width) / @gridsystem-width);
+		@offset-amount:@calculated-column-width+(@column-gutter-width);
+		padding-right: 0;
+		margin-left: @offset-amount;
+	}
+	.mixin(@offset,@columns);
 }

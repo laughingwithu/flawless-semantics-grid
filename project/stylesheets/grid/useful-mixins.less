@@ -1,15 +1,4 @@
 // USEFUL LESS MIXINS for Flawless Semantics
-///////////////////////////
-// GRID MIXIN // Sean Steindl aka http://github.com/laughingwithu
-///////////////////////// 
-// a width mixin, allows an element (usually body or some other wrapper) to become a grid container with the values from above or as specified by the user
-.widths(@width, @min-width, @max-width) {
-  width: @width;
-  min-width: @min-width;
-  max-width: @max-width;
-  .clearfix();
-}
-
 ////////////////////
 // MICRO CLEARFIX // http://nicolasgallagher.com/micro-clearfix-hack/
 ////////////////////
@@ -30,7 +19,7 @@
 ///////////////////////////
 // EQUAL HEIGHT COLUMNS // Sean Steindl aka http://github.com/laughingwithu
 ///////////////////////// 
-// wrap parent of equal height column
+// wrap parent of equal height column this should be a row element
 .col_equal_wrap() {
 	overflow: hidden; 
     display:block;
