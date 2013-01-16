@@ -1,4 +1,4 @@
-//Flawless-Semantics adapted by Sean Steindl from the Semantic.gs
+// Flawless-Semantics adapted by Sean Steindl from the Semantic.gs
 ///////////
 // GRID SPECIFIC CALCULATIONS
 //////////
@@ -9,16 +9,17 @@
 // Set @total-width to 100% for a fluid layout
 @total-width: @gridsystem-width;
 
+@column-gutter-width: @total-width*((@gutter-width)/@gridsystem-width);
+
 // Utility variable for the print layout - you should never need to modify this (note the one less gutter than in the original grid)
 @p-gridsystem-width: (@column-width*@columns) + (@gutter-width*(@columns - 1))* 1px;
 
-// Set @total-width to 100% for a fluid layout
+// Set @p-total-width to 100% for a fluid layout (Need to combine this with @total-width)
 @p-total-width: @p-gridsystem-width;
 
 // gutter widths for columns
 @p-column-gutter-width: @p-total-width*((@gutter-width)/@p-gridsystem-width);
 
-@column-gutter-width: @total-width*((@gutter-width)/@gridsystem-width);
 
 //////////
 // Grid //
@@ -43,15 +44,17 @@
 .row(@columns:@columns) {
 	min-width: @min-width;
 	display: block;
+	overflow:hidden;
 	.clearfix;
 	.mixin(@columns:@columns)  when (ispixel(@total-width))  {
 		@calculated-row-width: (@total-width*@gridsystem-width)/@gridsystem-width;
-		width: @calculated-row-width; // Need to test this more
+		width: @calculated-row-width;
+		margin-left:@p-column-gutter-width* -1;
 		}
 	.mixin(@columns:@columns)  when (ispercentage(@total-width))  {
-		@calculated-row-width: (@total-width*@gridsystem-width)/@gridsystem-width;
 		@calculated-row-width: @total-width*((@gutter-width + @gridsystem-width)/@gridsystem-width);
-		width: @calculated-row-width; // Need to test this more
+		width: @calculated-row-width;
+		margin-left:@column-gutter-width* -1;
 	}
 	.mixin(@columns);
 }
@@ -69,15 +72,13 @@
 		box-sizing: border-box;
 	.mixin(@x,@columns:@columns)  when (ispixel(@total-width))  {
 		@calculated-column-width: @p-total-width*((((@gutter-width+@column-width)*@x)-@gutter-width) / @p-gridsystem-width);
-		width: @calculated-column-width; // Need to test this more
-		margin-right: @p-column-gutter-width;
+		width: @calculated-column-width; 
+		margin-left: @p-column-gutter-width;
 	}
-	// This needs to be tested NOWWWWWWWWWWWWWWWWWWWWWWWWWWW
 	.mixin(@x,@columns:@columns)  when (ispercentage(@total-width))  {
 		@calculated-column-width: @total-width*((((@gutter-width+@column-width)*@x)-@gutter-width) / @gridsystem-width);
-	@calculated-column-width: @total-width*((((@gutter-width+@column-width)*@x)-@gutter-width) / @gridsystem-width);
-		width: @calculated-column-width; // Need to test this more
-		margin-right: @column-gutter-width;
+		width: @calculated-column-width;
+		margin-left: @column-gutter-width;
 	}
 	.mixin(@x,@columns);
 }
@@ -89,13 +90,13 @@
 .push(@offset:1,@columns:@columns)  {
 	.mixin(@offset:1,@columns:@columns)  when (ispixel(@total-width))  {
 		@calculated-column-width: @p-total-width*((((@gutter-width+@column-width)*@offset)-@gutter-width) / @p-gridsystem-width);
-		@offset-amount:@calculated-column-width+(@column-gutter-width);
+		@offset-amount:@calculated-column-width+(@column-gutter-width*2);
 		padding-right: 0;
 		margin-left: @offset-amount;
 	}
 	.mixin(@offset:1,@columns:@columns)  when (ispercentage(@total-width))  {
 		@calculated-column-width: @total-width*((((@gutter-width+@column-width)*@offset)-@gutter-width) / @gridsystem-width);
-		@offset-amount:@calculated-column-width+(@column-gutter-width);
+		@offset-amount:@calculated-column-width+(@column-gutter-width*2);
 		padding-right: 0;
 		margin-left: @offset-amount;
 	}
