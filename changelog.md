@@ -1,3 +1,8 @@
+#Release 1.1.3 — TBA
+
+* refactored code and optimised
+* added a link to the examples from the readme
+
 #Release 1.1.2 — February 3, 2013
 
 * fixed the show grid mixin
