@@ -5,7 +5,9 @@
 	@columns: 12; // Specifies the number of columns in the grid: Default = 12
 	@column-width: 60; // The width of columns in the grid. Default = 30
 	@gutter-width: 20; // The gap between elements in the grid (any css unit) Default = 60
-	@total-width: 80%; // Uncomment to specify a width smaller than 100%. Any percentage value. Default 80%.
+
+	@grid-type:percentage; // Tells the mixins what grid type is. Values are either pixel, em or percentage. Default pixel.
+	@percentage-width: 80%; // Uncomment to specify a width smaller than 100%. Any percentage value. Default 80%.
 
 // Rythymless variables. To maintain the vertical rythym it is important to use @rythymless-gap for your vertical spacing (eg. margin-bottom:@rythymless-gap;).
 	@rhythmic-unit: 1.5em; // Essentialy the line spacing. Any css unit.
