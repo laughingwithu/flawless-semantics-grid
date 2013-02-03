@@ -1,0 +1,51 @@
+body {
+    font-family: 'georgia', sans-serif;
+    margin: 20px 0;
+    padding: 0;
+	color: #666;
+}
+
+// make the whole page a rhythm container
+#rhythmless > .rhythm-container(16px);
+
+// get rid of the margins in the header element, so that the subtitle
+// fits right below the title
+header {
+    h1 {
+        #rhythmless > .rhythm(40px);
+		text-align:center;
+    }
+
+    h2 {
+        #rhythmless > .rhythm(18px);
+		text-align:center;
+    }
+}
+
+h2 {
+    color: #666;
+	text-align:center;
+}
+
+h3 {
+    color: #666;
+	text-align:center;
+}
+
+a {
+    color: #666;
+    text-decoration: underline;
+
+    &:visited {
+        color: #666;
+    }
+
+    &:hover {
+        color: #333;
+    }
+}
+
+code, samp {
+    font-size: 14px * 0.8;
+	text-align: center;
+}

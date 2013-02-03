@@ -1,15 +1,4 @@
 // USEFUL LESS MIXINS for Flawless Semantics
-///////////////////////////
-// GRID MIXIN // Sean Steindl aka http://github.com/laughingwithu
-///////////////////////// 
-// a width mixin, allows an element (usually body or some other wrapper) to become a grid container with the values from above or as specified by the user
-.widths(@width, @min-width, @max-width) {
-  width: @width;
-  min-width: @min-width;
-  max-width: @max-width;
-  .clearfix();
-}
-
 ////////////////////
 // MICRO CLEARFIX // http://nicolasgallagher.com/micro-clearfix-hack/
 ////////////////////
@@ -30,19 +19,37 @@
 ///////////////////////////
 // EQUAL HEIGHT COLUMNS // Sean Steindl aka http://github.com/laughingwithu
 ///////////////////////// 
-// wrap parent of equal height column
-.col_equal_wrap() {
-	overflow: hidden; 
-    display:block;
-	position:relative;
-}
 // make this an equal height column
-.col_equal() {
+.col-equal() {
 	padding-bottom:32767px;
     margin-bottom:-32767px;	
 }
-// remove equal height column (useful when we do responsive design as we might not care if they are equal heights
-.col_equal_remove() {
+// remove equal height column (useful when we do responsive design as we might not care if they are equal heights. Note this sets the bottom padding and margin to 0 and will overide other styles.
+.col-equal-remove() {
 	padding-bottom: 0;
 	margin-bottom: 0;
+}
+
+// Show the grid a mixin by ninique at https://github.com/ninique and adapted by Sean Steindl
+// Simple calculations to determine stop points
+@column-grad: @column-width/(@column-width+@gutter-width)*100%;
+@gutter-grad: @gutter-width/(@column-width+@gutter-width)*100%;
+
+// this mixin is called on a .grid element and where @show-grid = true
+.show-grid(){
+	background-size: @total-width*((@column-width+@gutter-width) / @gridsystem-width);
+	background-image: -moz-linear-gradient(left, @gutter-color 0%,@gutter-color @gutter-grad,@column-color @gutter-grad,@column-color @gutter-grad+@column-grad,@gutter-color @gutter-grad+@column-grad);
+	background-image: -webkit-linear-gradient(left, @gutter-color 0%,@gutter-color @gutter-grad,@column-color @gutter-grad,@column-color @gutter-grad+@column-grad,@gutter-color @gutter-grad+@column-grad);
+	background-image: -o-linear-gradient(left, @gutter-color 0%,@gutter-color @gutter-grad,@column-color @gutter-grad,@column-color @gutter-grad+@column-grad,@gutter-color @gutter-grad+@column-grad);
+	background-image: -ms-linear-gradient(left, @gutter-color 0%,@gutter-color @gutter-grad,@column-color @gutter-grad,@column-color @gutter-grad+@column-grad,@gutter-color @gutter-grad+@column-grad);
+	background-image: linear-gradient(left, @gutter-color 0%,@gutter-color @gutter-grad,@column-color @gutter-grad,@column-color @gutter-grad+@column-grad,@gutter-color @gutter-grad+@column-grad);
+}
+
+// vertical rythym grid mixin - requires rythym.less. // prefer to apply it to html as body can be used to wrap
+html {
+	.mixin() {} // default value
+	.mixin() when (@show-rythym = true) {	
+		#rhythmless > .vertical-grid(@rythym-color);
+	}
+	.mixin();
 }

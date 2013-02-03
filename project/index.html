@@ -3,14 +3,14 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<title>Flawless-Semantics | Showoff - Fluid Grid</title>
+	<title>Flawless-Semantics | Showoff - Pixel Based Grid</title>
 
     <!-- Stylesheets -->
-	<link rel="stylesheet" href="fluid.less" type="text/less" media="screen" />
+	<link rel="stylesheet" href="pixel.less" type="text/less" media="screen" />
 	<!--link rel="stylesheet" href="grid-showoff.css" type="text/css" media="screen" /-->
 	
     <!-- Scripts -->
-	<script src="./js/less-1.3.3.min.js" type="text/javascript"> less = { env: "development"}; </script>
+	<script src="./js/less-1.3.3.min.js" type="text/javascript"> less = { env: "production"}; </script>
 	<!--[if lt IE 9]><script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 <body>
@@ -102,11 +102,11 @@
 </section>
 
 <section id="nesting">
-	<div class="first-row">
+	<div class="first-row ">
 		<div class="intro">
 			<h3 class="show">Nesting column</h3>
 			<code>.row(12)</code>
-			<p>.col-equal-wrap(); is being applied to the row element to allow for the nested columns to be equal height columns. Note this does not work with automatic rows</p>
+			<p>Note that the .col-equal(); mixin does not work with automatic rows and .col-equal-remove(); can be used to remove the equal heights in media queries.</p>
 		</div>
 		<div class="nested1">
 			<code>.column(2);</br>No equal height mixin applied</code>
