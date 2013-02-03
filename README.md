@@ -10,11 +10,11 @@ The most notable difference is the fact that Flawless-Semantics uses a column - 
 
 Other differences include:
 * mixin to create equal height columns;
-* mixin to specify the width, min-width, and max-width of a container;
+* mixin to specify the width, min-width, and max-width of a container - not the most elegant solution but it works;
 * feature to allow for automatic rows and columns;
 * built in vertical grid based on rythymless by [Paul GB](http://paulgb.github.com/rhythmless/);
-* added a mixin to allow the grid to be visualised;
-* borders and padding don't affect grid;
+* a mixin to allow the grid to be visualised. This was adapted from the mixin by [Ninique](https://github.com/ninique) at [file](https://github.com/twigkit/semantic.gs/pull/53/files);
+* borders and padding don't affect grid - we simply use the box-sizing property;
 * removal of padding as an option to be used as a gutter // this may be added in the future though it won't be implemented in the same way that it is in semantic.gs;
 * support for less only at this time but this may change in the future.
 

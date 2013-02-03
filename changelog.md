@@ -1,4 +1,4 @@
-#release 1.1.2 — TBA
+#Release 1.1.2 — February 3, 2013
 
 * fixed the show grid mixin
 * added option to disable and enable the show grid and vertical rythym grids
@@ -7,12 +7,12 @@
 * cleaned up the code substantially
 * added a fix for the sub-pixel bug for percentage based grids
 
-#release 1.1.1 — January 16, 2013
+#Release 1.1.1 — January 16, 2013
 
 * quickly changed the method of hiding the gutter so that it is now on the left rather than the right (also now uses a negative margin)
 * added mixin to show grid using gradients
 
-#release 1.1.0 — January 16, 2013
+#Release 1.1.0 — January 16, 2013
 
 * remove need for omega classes
 * added rythym.less for vertical rythym
