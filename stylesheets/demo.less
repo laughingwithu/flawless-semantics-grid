@@ -1,55 +1,24 @@
+p {
+	padding: 0 20px;
+}
+
 code {
 	display:block;
 	color:#fff;	
-}
-
-#Basic {
-	.first, .second {
-		background-color: #3E97D1;
+	.intro & {
+		color: #666;
 	}
 }
 
-#Multiple-rows {
-	.alpha, .beta, .gamma, .delta, .epsilon, .zeta, .eta, .theta, .iota, .kappa, .lambda, .mu, .nu {
-			background-color: #3E97D1;
-			margin-bottom: 20px;
-	}
+#auto .box {
+	white-space: nowrap; // just to prevent ie breaking the grid, will need to look at a more elegant solution
 }
 
-
-#Shifts {
-	.alpha {
-			background-color: #3E97D1;
-	}
-}
-
-#nesting {
-	.first-row {
-		.nested1 {
-			background-color: #3E97D1;
-		}
-		.nested2 {
-			background-color: #3E97D1;
-		}
-		.nested3 {
-			background-color: #3E97D1;
-			aside {
-				background-color: #0A67A3;
-			}
-			article {
-				background-color: #0A67A3;
-			}
-		}
-	}
-}
-
-.box {
+.first, .second, .alpha, .beta, .gamma, .delta, .epsilon, .zeta, .eta, .theta, .iota, .kappa, .lambda, .mu, .nu, .push-example, .nested1, .nested2, .nested3, .box {
 	background-color: #3E97D1;
 	margin-bottom: 20px;
 }
 
-.intro {
-	code {
-		color: #666;
-	}
+article, aside {
+	background-color: #0A67A3;
 }

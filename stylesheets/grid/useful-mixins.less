@@ -19,34 +19,37 @@
 ///////////////////////////
 // EQUAL HEIGHT COLUMNS // Sean Steindl aka http://github.com/laughingwithu
 ///////////////////////// 
-// wrap parent of equal height column this should be a row element
-.col_equal_wrap() {
-	overflow: hidden; 
-    display:block;
-	position:relative;
-}
 // make this an equal height column
-.col_equal() {
+.col-equal() {
 	padding-bottom:32767px;
     margin-bottom:-32767px;	
 }
-// remove equal height column (useful when we do responsive design as we might not care if they are equal heights
-.col_equal_remove() {
+// remove equal height column (useful when we do responsive design as we might not care if they are equal heights. Note this sets the bottom padding and margin to 0 and will overide other styles.
+.col-equal-remove() {
 	padding-bottom: 0;
 	margin-bottom: 0;
 }
 
-// Show the Grid a mixin by ninique at https://github.com/ninique and adapted by Sean Steindl
+// Show the grid a mixin by ninique at https://github.com/ninique and adapted by Sean Steindl
+// Simple calculations to determine stop points
+@column-grad: @column-width/(@column-width+@gutter-width)*100%;
+@gutter-grad: @gutter-width/(@column-width+@gutter-width)*100%;
 
-//Add to body to show grid during development
-.showGrid(){
-@_column-percent: @column-width/(@column-width+@gutter-width)*100%;
-@_gutter-percent: @gutter-width/(@column-width+@gutter-width)*50%;
+// this mixin is called on a .grid element and where @show-grid = true
+.show-grid(){
+	background-size: @total-width*((@column-width+@gutter-width) / @gridsystem-width);
+	background-image: -moz-linear-gradient(left, @gutter-color 0%,@gutter-color @gutter-grad,@column-color @gutter-grad,@column-color @gutter-grad+@column-grad,@gutter-color @gutter-grad+@column-grad);
+	background-image: -webkit-linear-gradient(left, @gutter-color 0%,@gutter-color @gutter-grad,@column-color @gutter-grad,@column-color @gutter-grad+@column-grad,@gutter-color @gutter-grad+@column-grad);
+	background-image: -o-linear-gradient(left, @gutter-color 0%,@gutter-color @gutter-grad,@column-color @gutter-grad,@column-color @gutter-grad+@column-grad,@gutter-color @gutter-grad+@column-grad);
+	background-image: -ms-linear-gradient(left, @gutter-color 0%,@gutter-color @gutter-grad,@column-color @gutter-grad,@column-color @gutter-grad+@column-grad,@gutter-color @gutter-grad+@column-grad);
+	background-image: linear-gradient(left, @gutter-color 0%,@gutter-color @gutter-grad,@column-color @gutter-grad,@column-color @gutter-grad+@column-grad,@gutter-color @gutter-grad+@column-grad);
+}
 
-background-size: @total-width*((@column-width+@gutter-width) / @gridsystem-width);
-background-image: -moz-linear-gradient(left, rgba(255,0,0,0.05) 0%,rgba(255,0,0,0.05) @_gutter-percent,rgba(255,0,0,0.1) @_gutter-percent,rgba(255,0,0,0.1) @_gutter-percent+@_column-percent,rgba(255,0,0,0.05) @_gutter-percent+@_column-percent);
-background-image: -webkit-linear-gradient(left, rgba(255,0,0,0.05) 0%,rgba(255,0,0,0.05) @_gutter-percent,rgba(255,0,0,0.1) @_gutter-percent,rgba(255,0,0,0.1) @_gutter-percent+@_column-percent,rgba(255,0,0,0.05) @_gutter-percent+@_column-percent);
-   background-image: -o-linear-gradient(left, rgba(255,0,0,0.05) 0%,rgba(255,0,0,0.05) @_gutter-percent,rgba(255,0,0,0.1) @_gutter-percent,rgba(255,0,0,0.1) @_gutter-percent+@_column-percent,rgba(255,0,0,0.05) @_gutter-percent+@_column-percent);
-background-image: -ms-linear-gradient(left, rgba(255,0,0,0.05) 0%,rgba(255,0,0,0.05) @_gutter-percent,rgba(255,0,0,0.1) @_gutter-percent,rgba(255,0,0,0.1) @_gutter-percent+@_column-percent,rgba(255,0,0,0.05) @_gutter-percent+@_column-percent);
-background-image: linear-gradient(left, rgba(255,0,0,0.05) 0%,rgba(255,0,0,0.05) @_gutter-percent,rgba(255,0,0,0.1) @_gutter-percent,rgba(255,0,0,0.1) @_gutter-percent+@_column-percent,rgba(255,0,0,0.05) @_gutter-percent+@_column-percent);
+// vertical rythym grid mixin - requires rythym.less. // prefer to apply it to html as body can be used to wrap
+html {
+	.mixin() {} // default value
+	.mixin() when (@show-rythym = true) {	
+		#rhythmless > .vertical-grid(@rythym-color);
+	}
+	.mixin();
 }
