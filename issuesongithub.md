@@ -10,7 +10,7 @@ If you think this guide can be improved, please share your thoughts.
 
 ## Do not…
 
-Please **do not** use the issue tracker for personal support requests (Either Send me a message or use the wiki).
+Please **do not** use the issue tracker for personal support requests (use StackOverflow or IRC).
 
 Please **do not** derail or troll issues. Keep the
 discussion on topic and respect the opinions of others.
@@ -129,3 +129,7 @@ project:
 
 10. [Open a Pull Request](http://help.github.com/send-pull-requests/) with a
     clear title and description.
+
+## Acknowledgment
+	Based on a work at
+[github.com/necolas/idiomatic-css](https://github.com/necolas/idiomatic-css).
