@@ -8,7 +8,6 @@
 ////////////
 body {
 	.widths(300px, 100%); // makes the min-width of the body 300px and the max-width 100%. Note min-width won't have any effect as a percentage for obvious reasons.
-	margin: 0 auto;
 }
 
 .page {
@@ -170,12 +169,12 @@ footer {
 	.nested2 {
 		.column(6);
 		.col-equal-remove(); // remove the equal column
-		margin-bottom: 20px; // make the margin 20px after the .col-equl-remove has set it to 0px
+		#rhythmless > .rhythm-margin-bottom(1); // after the .col-equl-remove has set the margin to 0px we set it to our vertical rhythm
 	}
 	.nested3 {
 		.column(12);
 		.col-equal-remove(); // remove the equal column
-		margin-bottom: 20px; // make the margin 20px after the .col-equl-remove has set it to 0px
+		#rhythmless > .rhythm-margin-bottom(1); // after the .col-equl-remove has set the margin to 0px we set it to our vertical rhythm
 		.col-equal();
 		aside {
 			.column(6);

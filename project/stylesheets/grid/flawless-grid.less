@@ -2,42 +2,14 @@
 ///////////
 // GRID SPECIFIC CALCULATIONS
 //////////
-
-// what type of grid do we have here
-.grid-type() when (@grid-type = em) {
-	// Utility variables - you should never need to modify these calculations
-	@gridsystem-width: (@column-width*@columns) + (@gutter-width*@columns) * 1px;
-	@p-gridsystem-width: @gridsystem-width - @gutter-width;
-	// Set @total-width to 100% for a fluid layout
-	@total-width: @gridsystem-width;
-	// gutter widths for columns and rows
-	@column-gutter-width: @total-width*((@gutter-width)/@gridsystem-width);
-	@p-column-gutter-width: @total-width*(@gutter-width/@p-gridsystem-width);
-}
-
-.grid-type() when (@grid-type = pixel) {
-	// Utility variables - you should never need to modify these calculations
-	@gridsystem-width: (@column-width*@columns) + (@gutter-width*@columns) * 1px;
-	@p-gridsystem-width: @gridsystem-width - @gutter-width;
-	// Set @total-width to 100% for a fluid layout
-	@total-width: @gridsystem-width;
-	// gutter widths for columns and rows
-	@column-gutter-width: @gutter-width*1px;
-	@p-column-gutter-width: @total-width*(@gutter-width/@p-gridsystem-width);
-}
-
-.grid-type() when (@grid-type = percentage) {
-	// Utility variables - you should never need to modify these calculations
-	@gridsystem-width: (@column-width*@columns) + (@gutter-width*@columns) ;
-	@p-gridsystem-width: @gridsystem-width - @gutter-width;
-	// Set @total-width to 100% for a fluid layout
-	@total-width: @percentage-width;
-	// gutter widths for columns and rows
-	@column-gutter-width: @total-width*((@gutter-width)/@gridsystem-width);
-	@p-column-gutter-width: @total-width*(@gutter-width/@p-gridsystem-width);
-}
-
-.grid-type(); // call the grid-type mixin and make the variables available globally
+// Utility variables - you should never need to modify these calculations
+@gridsystem-width: (@column-width*@columns) + (@gutter-width*@columns) * 1px;
+@p-gridsystem-width: @gridsystem-width - @gutter-width;
+// Set @total-width to 100% for a fluid layout
+@total-width: @gridsystem-width;
+// gutter widths for columns and rows
+@column-gutter-width: @total-width*((@gutter-width)/@gridsystem-width);
+@p-column-gutter-width: @total-width*(@gutter-width/@p-gridsystem-width);
 
 //////////
 // Grid //
