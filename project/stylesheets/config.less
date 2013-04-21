@@ -7,11 +7,12 @@
 	@gutter-width: 20; // The gap between elements in the grid (any css unit) Default = 60
 	@total-width: 80%; // Uncomment to specify a width smaller than 100%. Any percentage value. Default 80%.
 
-// Rythymless variables. To maintain the vertical rythym it is important to use @rythymless-gap for your vertical spacing (eg. margin-bottom:@rythymless-gap;).
+// Rhythmless variables. To maintain the vertical rhythm it is important to use .rhythm() mixin
+// for your vertical spacing, eg: h1 { #rhythmless > .rhythm(40px); }
 	@rhythmic-unit: 1.5em; // Essentialy the line spacing. Any css unit.
 	@rhythmic-fontsize: 14px; // Base font size to apply. Any css unit.
-	@show-rythym: true; // true or false.
-	@rythym-color: #eef; // Color of the lines showing the vertical rythym. Any Css Color.
+	@show-rhythm: true; // true or false.
+	@rhythm-color: #eef; // Color of the lines showing the vertical rhythm. Any Css Color.
 
 // Variables specific to the .show-grid() mixin
 	@show-grid:true; // true or false
@@ -24,7 +25,7 @@
 // Required
 	@import "grid/useful-mixins.less"; // loads several useful mixins and calculations required by semantic.gs
 	@import "grid/flawless-grid.less"; // loads the grid 
-	@import "grid/rhythm.less"; // import the vertical rythm grid
+	@import "grid/rhythm.less"; // import the vertical rhythm grid
 	@import 'reset.css'; // import reset styles
 	
 ///////////////////
