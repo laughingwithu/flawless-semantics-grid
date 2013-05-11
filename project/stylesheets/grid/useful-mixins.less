@@ -45,11 +45,11 @@
 	background-image: linear-gradient(left, @gutter-color 0%,@gutter-color @gutter-grad,@column-color @gutter-grad,@column-color @gutter-grad+@column-grad,@gutter-color @gutter-grad+@column-grad);
 }
 
-// vertical rythym grid mixin - requires rythym.less. // prefer to apply it to html as body can be used to wrap
+// vertical rhythm grid mixin - requires rhythm.less. // prefer to apply it to html as body can be used to wrap
 html {
 	.mixin() {} // default value
-	.mixin() when (@show-rythym = true) {	
-		#rhythmless > .vertical-grid(@rythym-color);
+	.mixin() when (@show-rhythm = true) {	
+		#rhythmless > .vertical-grid(@rhythm-color);
 	}
 	.mixin();
 }
