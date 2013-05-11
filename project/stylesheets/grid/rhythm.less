@@ -7,8 +7,18 @@
 
 // global defaults, these can (and usually should) be overwritten by
 // the file that includes this
-@rhythmic-unit: 20px;
-@rhythmic-fontsize: 14px;
+// @rhythmic-unit: 20px; // Good rule of thumb is 1.4 X @rhythmic-fontsize. Default 20px
+// @rhythmic-fontsize: 14px; // default size of your text. default 14px
+
+// Font-sizes (in factors relative to @rhythmic-fontsize). 
+//	@h1-size:2.8; // default 2.8
+//	@h2-size:2.42; // default 2.42
+//	@h3-size:1.2; // default 1.2
+//	@h4-size:1.1; // default 1.1
+//	@h5-size:1.0; // default 1.0
+//	@h6-size:1.0; // default 1.0
+//	@small-size:0.8; // default 0.8
+//	@sup-sub-size:.65; // default .65
 
 #rhythmless {
     // the base mixin used by all block-level elements within the
@@ -26,14 +36,14 @@
 
         sup {
             vertical-align: top;
-            font-size: 65%;
+            font-size: percentage(@sup-sub-size);
             position: relative;
             top: 0 - (@font-size / 4);
         }
 
         sub {
             vertical-align: bottom;
-            font-size: 65%;
+            font-size: percentage(@sup-sub-size);
             position: relative;
             bottom: 0 - (@font-size / 4);
         }
@@ -94,17 +104,29 @@
         @margin: round(@font-size / 2);
 
         h1 {
-            #rhythmless > .rhythm(round(@font-size * 2.8), @margin);
+            #rhythmless > .rhythm(round(@font-size * @h1-size), @margin);
         }
 
         h2 {
-            #rhythmless > .rhythm(round(@font-size * 1.42), @margin);
+            #rhythmless > .rhythm(round(@font-size * @h2-size), @margin);
         }
 
         h3 {
-            #rhythmless > .rhythm(round(@font-size * 1.2), @margin);
+            #rhythmless > .rhythm(round(@font-size * @h3-size), @margin);
         }
-
+		
+		h4 {
+            #rhythmless > .rhythm(round(@font-size * @h4-size), @margin);
+        }
+		
+		h5 {
+            #rhythmless > .rhythm(round(@font-size * @h5-size), @margin);
+        }
+		
+		h6 {
+            #rhythmless > .rhythm(round(@font-size * @h6-size), @margin);
+        }
+		
         p, ul, pre, code {
             #rhythmless > .rhythm(@font-size, @margin);
         }
@@ -114,5 +136,27 @@
         }
 
     }
-}
-
+    // apply consistent rhythm by using the rhythmic-unit as a base for 
+    // determining padding and margin heights. Note that the values are
+	// factors not pixel values and works best with whole numbers.
+	.rhythm-padding(@value:1){
+		padding-top:@value * @rhythmic-unit;
+		padding-bottom:@value * @rhythmic-unit;
+	}
+	.rhythm-padding-top(@value:1){
+		padding-top:@@value * @rhythmic-unit;
+	}
+	.rhythm-padding-bottom(@value:1){
+		padding-bottom:@value * @rhythmic-unit;
+	}
+	.rhythm-margin(@value:1){
+		margin-top:@value * @rhythmic-unit;
+		margin-bottom:@value * @rhythmic-unit;
+	}
+	.rhythm-margin-top(@value:1){
+		margin-top:@value * @rhythmic-unit;
+	}
+	.rhythm-margin-bottom(@value:1){
+		margin-bottom:@value * @rhythmic-unit;
+	}
+}  
