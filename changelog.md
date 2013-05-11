@@ -1,4 +1,4 @@
-#Release 1.1.3 — May 2013
+#Release 1.1.3 — May 11, 2013
 
 * refactored code and optimised
 * added a link to the examples from the readme
