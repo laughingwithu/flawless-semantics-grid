@@ -1,0 +1,184 @@
+ <!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Flawless-Semantics | Showoff - Fixed Element with a Grid</title>
+
+    <!-- Stylesheets -->
+	<link rel="stylesheet" href="fixed.less" type="text/less" media="screen" />
+	<!--link rel="stylesheet" href="grid-showoff.css" type="text/css" media="screen" /-->
+	
+    <!-- Scripts -->
+	<script src="./js/less-1.3.3.min.js" type="text/javascript"> less = { env: "development"}; </script>
+	<!--[if lt IE 9]><script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body>
+<header id="top">
+	<h1><a href="https://github.com/laughingwithu/flawless-semantics-grid">Flawless-Semantics</a></h1>
+</header>
+<div class="scroll-container">
+<div class="page">
+	<section id="About">
+			<p>Based on the well known semantic.gs by Tyler Tate, Flawless-Semantics shares many of the same goals that semantic.gs such as allowing:</p>
+			<ol>
+			<li>column, gutter widths and the number of columns to be set;</li>
+			<li>switching between pixel and percentage based layouts;</li>
+			<li>responsive fixed layouts, all without any unsemantic .grid_x classes in your markup.</li>
+			</ol>
+			<p>As is evident from the examples below, unlike semantic.gs this grid uses a column-gutter-column approach, I have provided as many examples as  I can on this page and there a more examples via the links found at the bottom of the page. There is no need for a omega classes as each row is created exactly one gutter width larger to accommodate and hide the extra gutter.</p>
+			<p>To find out more about Flawless-Semantics please see the readme located <a href="https://github.com/laughingwithu/flawless-semantics-grid">here</a></p>
+	</section>
+	<section id="Basic">
+		<div class="first-row">
+			<div class="intro">
+				<h3 class="show">Basic</h3>
+				<code>.row(12);</code>
+			</div>
+			<div class="first">
+				<code>.column(6);</code>
+			</div>
+			<div class="second">
+				<code>.column(6);<br></code>
+			</div>
+		</div>
+	</section>
+	<section id="Multiple-rows">
+		<div class="first-row">
+			<div class="intro">
+				<h3 class="show">Multiple rows</h3>
+				<code>.row(12);</code>
+			</div>
+			<div class="alpha">
+				<code>.column(1);</code>
+			</div>
+			<div class="beta">
+				<code>.column(11,12);</code>
+			</div>
+			<div class="gamma">
+				<code>.column(2);</code>
+			</div>
+			<div class="delta">
+				<code>.column(10,12);</code>
+			</div>
+			<div class="epsilon">
+				<code>.column(3);</code>
+			</div>
+			<div class="zeta">
+				<code>.column(9,12);</code>
+			</div>
+			<div class="eta">
+				<code>.column(4);</code>
+			</div>
+			<div class="theta">
+				<code>.column(8,12);</code>
+			</div>
+			<div class="iota">
+				<code>.column(5);</code>
+			</div>
+			<div class="kappa">
+				<code>.column(7,12);</code>
+			</div>
+			<div class="lambda">
+				<code>.column(4);</code>
+			</div>
+				<div class="mu">
+			<code>.column(2);</code>
+			</div>
+			<div class="nu">
+				<code>.column(6,12);</code>
+		</div>
+	  </div>
+	</section>
+	<section id="Shifts">
+		<div class="first-row">
+			<div class="intro">
+				<h3 class="show">Shifting column</h3>
+				<code>.row(12);</code>
+			</div>
+			<div class="push-example">
+				<code>.column(6);<br>.push(3,12);</code>
+			</div>
+		</div>
+	</section>
+
+	<section id="nesting">
+		<div class="first-row">
+			<div class="intro">
+				<h3 class="show">Nesting column</h3>
+				<code>.row(12)</code>
+				<p>.col-equal-wrap(); is being applied to the row element to allow for the nested columns to be equal height columns. Note this does not work with automatic rows</p>
+			</div>
+			<div class="nested1">
+				<code>.column(2);</br>No equal height mixin applied</code>
+			</div>
+			<div class="nested2">
+				<code>.column(2);<br>.col-equal();</code>
+			</div>
+			<div class="nested3">
+				<code class="block">.column(8);<br>.col-equal();</code>
+				<div class="second-row">
+					<aside>
+						<code>.column(4,8);</code>
+					</aside>
+					<article>
+						<code>.column(4,8);</code>
+					</article>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section id="auto">
+		<div class="first-row">
+		<div class="intro">
+			<h3 class="show">Automatic rows</h3>
+			<code>.row(12);</code>
+		</div>
+		<div class="box">
+		<code>.box {.column(3,12);}</code>
+		</div>
+		<div class="box">
+			<code>2</code>
+		</div>
+		<div class="box">
+			<code>3</code>
+		</div>
+		<div class="box">
+			<code>4</code>
+		</div>
+		<div class="box">
+			<code>5</code>
+		</div>
+		<div class="box">
+			<code>6</code>
+		</div>
+		<div class="box">
+			<code>7</code>
+		</div>
+		<div class="box">
+			<code>8</code>
+		</div>
+		<div class="box">
+			<code>9</code>
+		</div>
+		<div class="box">
+			<code>10</code>
+		</div>
+		<div class="box">
+			<code>11</code>
+		</div>
+		<div class="box">
+			<code>12</code>
+		</div>
+	  </div>
+	</section>
+	</div>
+</div>
+<footer>
+	<h3 class="show">And that's all folks!</h3>
+	<p><a href="http://github.com/laughingwithu/flawless-semantics-grid">On Github!</a> | <a href="index.html">Showoff</a> | <a href="fluid.html">Fluid</a> | <a href="max-width.html">Max-width</a> | <a href="fixed.html">Fixed Element</a></p>
+</footer>
+</body>
+</html>

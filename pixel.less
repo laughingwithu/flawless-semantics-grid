@@ -5,8 +5,7 @@
 ////////////
 body {
 	.widths(12);
-	margin: 20px auto;
-	border: 1px dashed #888;
+	#rhythmless > .rhythm-margin-top(1); // add a margin to the top, using a value which works nicely with our vertical rhythm
 }
 
 .page {
@@ -196,12 +195,12 @@ footer {
 		.nested2 {
 			.column(2);
 			.col-equal-remove(); // remove the equal column
-			margin-bottom: 20px; // make the margin 20px after the .col-equl-remove has set it to 0px
+			#rhythmless > .rhythm-margin-bottom(1); // after the .col-equl-remove has set the margin to 0px we set it to our vertical rhythm
 		}
 		.nested3 {
 			.column(4);
 			.col-equal-remove(); // remove the equal column
-			margin-bottom: 20px; // make the margin 20px after the .col-equl-remove has set it to 0px
+			#rhythmless > .rhythm-margin-bottom(1); // after the .col-equl-remove has set the margin to 0px we set it to our vertical rhythm
 			aside {
 				.column(2);
 			}
