@@ -1,0 +1,166 @@
+
+// Rhythmless 0.1
+// Sept 25, 2012
+// Vertical Rhythm for LESS
+// http://paulgb.github.com/rhythmless/
+// (C) Paul Butler (MIT LICENSE)
+// Adapted by Sean Steindl aka Laughingwithu
+
+// global defaults, these can (and usually should) be overwritten by
+// the file that includes this
+// @rhythmic-unit: 20px; // Good rule of thumb is 1.4 X @rhythmic-fontsize. Default 20px
+// @rhythmic-fontsize: 14px; // default size of your text. default 14px
+
+// Font-sizes (in factors relative to @rhythmic-fontsize). 
+//	@h1-size:2.8; // default 2.8
+//	@h2-size:2.42; // default 2.42
+//	@h3-size:1.2; // default 1.2
+//	@h4-size:1.1; // default 1.1
+//	@h5-size:1.0; // default 1.0
+//	@h6-size:1.0; // default 1.0
+//	@small-size:0.8; // default 0.8
+//	@sup-sub-size:.65; // default .65
+
+// Work out what the Line-height ratio is
+@line-height-ratio: @rhythmic-unit / @rhythmic-fontsize ;
+
+#rhythmless {
+    // the base mixin used by all block-level elements within the
+    // rhythm-container
+    .rhythm-base(
+      @font-size: @rhythmic-fontsize,
+      @margin-top:0,
+      @margin-bottom:0,
+      @leading: 0,
+      @unit: @rhythmic-unit) {
+        font-size: @font-size;
+        line-height: ceil((@font-size + @leading) / @unit) * @unit;
+        margin-bottom: ceil((@margin-bottom) / @unit) * @unit;
+        margin-top: ceil((@margin-top) / @unit) * @unit;
+
+        sup {
+            vertical-align: top;
+            font-size: percentage(@sup-sub-size);
+            position: relative;
+            top: 0 - (@font-size / 4);
+        }
+
+        sub {
+            vertical-align: bottom;
+            font-size: percentage(@sup-sub-size);
+            position: relative;
+            bottom: 0 - (@font-size / 4);
+        }
+
+        * {
+            vertical-align: bottom;
+        }
+    }
+
+    // a nested container within a rhythm-container,
+    // allowed to have padding and a border
+    .nested-container(
+      @padding,
+      @border) {
+         margin-top: 0 - @padding - @border;
+         margin-bottom: 0 - @padding - @border;
+         padding-top: @padding;
+         padding-bottom: @padding;
+         border-width: @border;
+      :first-child {
+        margin-top: 0;
+      }
+      :last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    // a shortcut for .rhythm-base that assumes top and bottom margins
+    // are the same
+    .rhythm(
+      @font-size: @rhythmic-fontsize,
+      @margin: 0,
+      @leading: 0,
+      @unit: @rhythmic-unit) {
+        #rhythmless > .rhythm-base(@font-size, @margin, @margin, @leading, @unit)
+    }
+
+    // a mixin that displays a bunch of horizontal horizontal lines
+    // spaced according to the vertical rhythm unit (@rhythmic-unit)
+    .vertical-grid(@color: #ddd, @unit:@rhythmic-unit) {
+        @stop: 100% - 100% / @unit;
+        background: -webkit-gradient(
+            linear,
+            left top,
+            left bottom,
+            from(white),
+            color-stop(100% - 100% / @unit, white),
+            color-stop(100% - 100% / @unit, @color),
+            to(@color)
+        );
+        background: -moz-linear-gradient(top, white, white @stop, @color @stop,  @color);
+        background-size: auto @unit;
+    }
+    
+    // apply vertical rhythm to an element by adding .rhythm on common
+    // block-level elements occurring below it
+    .rhythm-container(@font-size) {
+        @margin: round(@font-size / 2);
+
+        h1, alpha {
+            #rhythmless > .rhythm(round(@font-size * @h1-size), @margin);
+        }
+
+        h2, beta {
+            #rhythmless > .rhythm(round(@font-size * @h2-size), @margin);
+        }
+
+        h3, gamma {
+            #rhythmless > .rhythm(round(@font-size * @h3-size), @margin);
+        }
+		
+		h4, delta {
+            #rhythmless > .rhythm(round(@font-size * @h4-size), @margin);
+        }
+		
+		h5, epsilon {
+            #rhythmless > .rhythm(round(@font-size * @h5-size), @margin);
+        }
+		
+		h6, zeta {
+            #rhythmless > .rhythm(round(@font-size * @h6-size), @margin);
+        }
+		
+        p, ul, pre, code {
+            #rhythmless > .rhythm(@font-size, @margin);
+        }
+
+        li {
+            #rhythmless > .rhythm(@font-size);
+        }
+
+    }
+    // apply consistent rhythm by using the rhythmic-unit as a base for 
+    // determining padding and margin heights. Note that the values are
+	// factors not pixel values and works best with whole numbers.
+	.rhythm-padding(@value:1){
+		padding-top:@value * @rhythmic-unit;
+		padding-bottom:@value * @rhythmic-unit;
+	}
+	.rhythm-padding-top(@value:1){
+		padding-top:@value * @rhythmic-unit;
+	}
+	.rhythm-padding-bottom(@value:1){
+		padding-bottom:@value * @rhythmic-unit;
+	}
+	.rhythm-margin(@value:1){
+		margin-top:@value * @rhythmic-unit;
+		margin-bottom:@value * @rhythmic-unit;
+	}
+	.rhythm-margin-top(@value:1){
+		margin-top:@value * @rhythmic-unit;
+	}
+	.rhythm-margin-bottom(@value:1){
+		margin-bottom:@value * @rhythmic-unit;
+	}
+}  
