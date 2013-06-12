@@ -1,25 +1,24 @@
 @import 'stylesheets/config.less';
 
-////////////
-// LAYOUT //
-////////////
+/*	 ____________
+	/   LAYOUT   \
+============================================================================ */
 body {
-	.widths(12);
-	#rhythmless > .rhythm-margin-top(1); // add a margin to the top, using a value which works nicely with our vertical rhythm
+	#grid-mixin > .widths(12);		 // make the body exactly 12 coloumns wide
+	#grid-mixin > .margin-auto();	 // center the body using margin values of auto on left and right
+	#grid-mixin > .padding-all();	 // padding all around our body using the same value as our gutters
+	#rhythmless > .rhythm-margin(1); // add a vertical rythym margin to the top and bottom
 }
 
 .page {
 	.grid();
 }
 
-header, section {
+header, section, footer, .intro {
 	.column(12);
 }
 
-.first {
-	.column(6);
-}
-.second {
+.first, .second, .push-example, .nu {
 	.column(6);
 }
 
@@ -29,22 +28,29 @@ header, section {
 .beta {
 	.column(11,12);
 }
-.gamma {
+.gamma, .mu, .nested1, .nested2  {
 	.column(2);
 }
 .delta {
 	.column(10,12);
 }
-.epsilon {
+.epsilon, .box {
 	.column(3);
 }
 .zeta {
 	.column(9,12);
 }
-.eta {
+
+/* ----------------------------------------------------------------------------
+| 	The use of aside, article here can only be done as this is a pixel based  |
+|	layout and the values are fixed regardless of the amount of columns 	  |
+|	available. In a fluid layout this would need to be separated and use 	  |
+|	.column(4,8)															  |
+---------------------------------------------------------------------------- */
+.eta, aside, article, .lambda  { 
 	.column(4);
 }
-.theta {
+.theta, .nested3 {
 	.column(8,12);
 }
 .iota {
@@ -53,39 +59,14 @@ header, section {
 .kappa {
 	.column(7,12);
 }
-.lambda {
-	.column(4);
-}
-.mu {
-.column(2);
-}
-.nu {
-	.column(6,12);
-}
 
 .push-example {
-	.column(6);
 	.push(3,12);
 }
 
-.first-row, .nest {
-
-	.nested1 {
-		.column(2)
-	}
-	.nested2 {
-		.column(2);
-		.col-equal();
-		}
-	.nested3 {
-		.column(8);
-		.col-equal();
-		aside {
-			.column(4,8);
-		}
-		article {
-			.column(4,8);
-		}
+.first-row {
+	.nested2, .nested3 {
+		#grid-mixin > .col-equal();
 	}
 }
 
@@ -97,119 +78,53 @@ header, section {
 	.row(8);
 }
 
-.intro {
-	.column(12);	
-}
-
-.box {
-	.column(3,12);
-}
-
-footer {
-	.column(12);
-}
-
-// media queries for adaptive design (pixel based). Note how you have to redefine each element for each media query  to take into account that there is only x columns available :(
-// First Media Query for Screens smaller than 960px
+/* ----------------------------------------------------------------------------	
+|	Break point for portable devices and screens smaller than 960px.		  |
+---------------------------------------------------------------------------- */
 @media screen and (max-width: 960px) {
 	body {
-		.widths(8);
+		#grid-mixin > .widths(8);
 	}
 	
 	.page {
 		.grid(8);
 	}
 
-	header, section {
+	header, section, footer, .intro {
 		.column(8);
 	}
 
-	.first {
+	.first, .second, .eta, .theta, .nu, .push-example, .box, .nested3 {
 		.column(4);
 	}
-	.second {
-		.column(4);
-	}
-	
-	.alpha {
-	.column(1);
-}
-
-.beta {
-	.column(7);
-}
-
-.gamma {
-	.column(2);
-}
-
-.delta {
-	.column(6);
-}
-
-.epsilon {
-	.column(3);
-}
-
-.zeta {
-	.column(5);
-}
-
-.eta {
-	.column(4);
-}
-
-.theta {
-	.column(4);
-}
-	
-	.iota {
-		.column(5);
-	}
-
-	.kappa {
-		.column(3);
-	}
-
-	.lambda {
-		.column(3);
-	}
-	
-	.mu {
+	.alpha, .mu {
 		.column(1);
 	}
-
-	.nu {
-		.column(4,8);
+	.beta {
+		.column(7);
+	}
+	.gamma, .nested1, .nested2, aside, article {
+		.column(2);
+	}
+	.delta {
+		.column(6);
+	}
+	.epsilon, .kappa, .lambda {
+		.column(3);
+	}
+	.zeta, .iota  {
+		.column(5);
 	}
 	
 	.push-example {
-		.column(4);
 		.push(2,8);
 	}
 	
-	.first-row, .nest {
-		.nested1 {
-			.column(2)
-		}
-		.nested2 {
-			.column(2);
-			.col-equal-remove(); // remove the equal column
-			#rhythmless > .rhythm-margin-bottom(1); // after the .col-equl-remove has set the margin to 0px we set it to our vertical rhythm
-		}
-		.nested3 {
-			.column(4);
-			.col-equal-remove(); // remove the equal column
-			#rhythmless > .rhythm-margin-bottom(1); // after the .col-equl-remove has set the margin to 0px we set it to our vertical rhythm
-			aside {
-				.column(2);
-			}
-			article {
-				.column(2);
-			}
+	.first-row {
+		.nested2, .nested3 {
+			#grid-mixin > .col-equal-remove(); // remove the equal column
 		}
 	}
-	
 	.first-row {
 		.row(8);
 	}
@@ -217,120 +132,25 @@ footer {
 	.second-row {
 		.row(4);
 	}
-
-	.intro {
-		.column(8);	
-	}
-
-	.box {
-		.column(4,8);
-	}
-
-	footer {
-		.column(8);
-	}
 }
-// Second Media Query for Screens smaller than 650x
-@media screen and (max-width: 650px) {
+
+/* ----------------------------------------------------------------------------	
+|	Break point for portable devices and screens smaller than @portable-width.|
+---------------------------------------------------------------------------- */
+@media screen and (max-width: 480px) {
 	body {
-		.widths(4);
+		#grid-mixin > .widths(4);
 	}
 	
 	.page {
 		.grid(4);
 	}
 
-	header, section {
-		.column(4);
-	}
-
-	.first {
-		.column(4);
-	}
-	.second {
+	header, section, footer, aside, article, .box, .nested1, .nested2, .nested3, .intro, .first, .second, .alpha, .beta, .gamma, .delta, .epsilon, .zeta, .eta, .theta, .iota, .kappa, .lambda, .mu, .nu, .push-example {
 		.column(4);
 	}
 	
-	.alpha {
-		.column(4);
-	}
-	.beta {
-		.column(4);
-	}
-	.gamma {
-		.column(4);
-	}
-	.delta {
-		.column(4);
-	}
-	.epsilon {
-		.column(4);
-	}
-	.zeta {
-		.column(4);
-	}
-	.eta {
-		.column(4);
-	}
-	.theta {
-		.column(4);
-	}
-	.iota {
-		.column(4);
-	}
-	.kappa {
-		.column(4);
-	}
-	.lambda {
-		.column(4);
-	}
-	.mu {
-		.column(4);
-	}
-	.nu {
-		.column(4);
-	}
-	
-	.push-example {
-		.column(4);
-		.push(0);
-	}
-	
-	.first-row {
-		.nested1 {
-			.column(4)
-		}
-		.nested2 {
-			.column(4);
-		}
-		.nested3 {
-			.column(4);
-			aside {
-				.column(4);
-			}
-			article {
-				.column(4);
-			}
-		}
-	}
-	
-	.first-row {
+	.first-row, .second-row {
 		.row(4);
-	}
-		
-	.second-row {
-		.row(4);
-	}
-
-	.intro {
-		.column(4);	
-	}
-
-	.box {
-		.column(4);
-	}
-
-	footer {
-		.column(4);
 	}
 }

@@ -1,0 +1,102 @@
+/* 	 ________________________________________
+	/   MIXINS FOR FLAWLESS SEMANTICS GRID   \
+===============================================================================
+|	#grid-mixin id for keeping these mixins organised						  |
+---------------------------------------------------------------------------- */
+#grid-mixin {
+	/* ------------------------------------------------------------------------
+	|	Widths mixin useful for making sure the widths are set correctly. 	  |
+	|	When the grid is pixel based it uses the @x and @column values to 	  |
+	|	work out the width and when it is percentage it uses @x as @min-width |
+	|	and @columns as @max-width.											  |
+	------------------------------------------------------------------------ */
+	.widths(@x:@columns,@columns:@columns) {
+		.mixin(@x,@columns){}
+		.mixin(@x,@columns)  when (ispixel(@total-width))  {
+			.column > .mixin(@x,@columns);
+		}
+		.mixin(@x:@min-width,@columns:@max-width)  when (ispercentage(@total-width))  {
+			// mix the values around so it makes sense
+			@min-width:@x;
+			@max-width:@columns;
+			min-width: @min-width;
+			max-width: @max-width;
+		}
+		.mixin(@x,@columns);
+	}
+	.padding-all(){
+		padding:@column-gutter-width;
+	}
+	.padding(){
+		padding-left:@column-gutter-width;
+		padding-right:@column-gutter-width;
+	}
+	.padding-left(){
+		padding-left:@column-gutter-width;
+	}
+	.padding-right(){
+		padding-right:@column-gutter-width;
+	}
+	.margin-auto() {
+		margin-left:auto;
+		margin-right:auto;
+	}
+	.margin(){
+		margin-left:@column-gutter-width;
+		margin-right:@column-gutter-width;
+	}
+	.margin-left(){
+		margin-left:@column-gutter-width;
+	}
+	.margin-right(){
+		margin-right:@column-gutter-width;
+	}
+	/* 	Equal Height Mixins - Sean Steindl aka http://github.com/laughingwithu
+	======================================================================== */
+	.col-equal() {
+		padding-bottom:		32767px;
+		margin-bottom:		-32767px;	
+	}
+
+	/* ------------------------------------------------------------------------
+	|	Remove equal height column (useful when we do responsive design as we |
+	|	might not care if they are equal heights. Note this sets the bottom   |
+	|	padding and margin to 0 and will need to overide other styles.		  |
+	|	This also resets the bottom margin to work with our vertical rhythm	  |
+	------------------------------------------------------------------------ */
+	.col-equal-remove() {
+		padding-bottom: 	0;
+		#rhythmless > .rhythm-margin-bottom(1);
+	}
+
+	/*	Showgrid mixin by ninique at https://github.com/ninique
+	======================================================================== */
+	@column-grad: 			@column-width/(@column-width+@gutter-width)*100%;
+	@gutter-grad: 			@gutter-width/(@column-width+@gutter-width)*100%;
+
+	/* ------------------------------------------------------------------------
+	|	This mixin is called on the .grid element where @show-grid = true but |
+	|	can be called on any element.										  |
+	------------------------------------------------------------------------ */ 
+	.show-grid(){
+		background-size: 	@total-width*((@column-width+@gutter-width) / @gridsystem-width);
+		background-image: 	-moz-linear-gradient(left, @gutter-color 0%,@gutter-color @gutter-grad,@column-color @gutter-grad,@column-color @gutter-grad+@column-grad,@gutter-color @gutter-grad+@column-grad);
+		background-image: 	-webkit-linear-gradient(left, @gutter-color 0%,@gutter-color @gutter-grad,@column-color @gutter-grad,@column-color @gutter-grad+@column-grad,@gutter-color @gutter-grad+@column-grad);
+		background-image: 	-o-linear-gradient(left, @gutter-color 0%,@gutter-color @gutter-grad,@column-color @gutter-grad,@column-color @gutter-grad+@column-grad,@gutter-color @gutter-grad+@column-grad);
+		background-image: 	-ms-linear-gradient(left, @gutter-color 0%,@gutter-color @gutter-grad,@column-color @gutter-grad,@column-color @gutter-grad+@column-grad,@gutter-color @gutter-grad+@column-grad);
+		background-image: 	linear-gradient(left, @gutter-color 0%,@gutter-color @gutter-grad,@column-color @gutter-grad,@column-color @gutter-grad+@column-grad,@gutter-color @gutter-grad+@column-grad);
+	}
+}
+ 
+/* ----------------------------------------------------------------------------
+|	Call the Vertical rythym grid mixin - requires rythym.less. // prefer to  |
+|	apply it to body as as padding values on body may be different to the	  |
+|	rythym unit and in such a case the vertical rythym would stuff up.		  |
+---------------------------------------------------------------------------- */ 
+body {
+	.mixin() {} // default value
+	.mixin() when (@show-rythym = true) {	
+		#rhythmless > .vertical-grid(@rythym-color);
+	}
+	.mixin();
+}

@@ -7,7 +7,7 @@
 // LAYOUT //
 ////////////
 body {
-	.widths(300px, 100%); // makes the min-width of the body 300px and the max-width 100%. Note min-width won't have any effect as a percentage for obvious reasons.
+	#grid-mixin > .widths(300px, 100%); // makes the min-width of the body 300px and the max-width 100%. Note min-width won't have any effect as a percentage for obvious reasons.
 }
 
 // Fixed Element specific css
@@ -24,29 +24,26 @@ html, body {
 }
 
 .scroll-container {
-	margin-bottom: @rhythmic-unit*4; 
-	margin-top: @rhythmic-unit*3; 
+	#rhythmless > .rhythm-margin-top(3);  
+	#rhythmless > .rhythm-margin-bottom(3); 
 }
 
 header, footer {
+	position: fixed;
 	background-color: white;
+	height: @rhythmic-unit*3;
 	width: 100%;
 	z-index: 1030;
-	position: fixed;
+	box-shadow: 0 0 5px 5px #888;
+	opacity:0.95;
 }
 
 header {
-	top: 0; 
-	height: @rhythmic-unit*3;
-	box-shadow: 0 0 5px 5px #888;
-	opacity:0.95;
+	top: 0;
 }
 
 footer {
 	bottom: 0;
-	height: @rhythmic-unit*4;
-	box-shadow: 0 0 5px 5px #888;
-	opacity:0.95;
 }
 
 section {
@@ -55,10 +52,11 @@ section {
 
 // End of Fixed Element specific css
 
-.first {
-	.column(6);
+.intro {
+	.column(12);
 }
-.second {
+
+.first, .second, .nu, .push-example {
 	.column(6);
 }
 
@@ -68,22 +66,22 @@ section {
 .beta {
 	.column(11,12);
 }
-.gamma {
+.gamma, .mu, .nested1, .nested2  {
 	.column(2);
 }
 .delta {
 	.column(10,12);
 }
-.epsilon {
+.epsilon, .box {
 	.column(3);
 }
 .zeta {
 	.column(9,12);
 }
-.eta {
+.eta, .lambda { 
 	.column(4);
 }
-.theta {
+.theta, .nested3 {
 	.column(8,12);
 }
 .iota {
@@ -92,37 +90,13 @@ section {
 .kappa {
 	.column(7,12);
 }
-.lambda {
-	.column(4);
-}
-.mu {
-.column(2);
-}
-.nu {
-	.column(6,12);
-}
 
 .push-example {
-	.column(6);
 	.push(3,12);
 }
 
-.nested1 {
-	.column(2)
-}
-.nested2 {
-	.column(2);
-	.col-equal();
-}
-.nested3 {
-	.column(8);
-	.col-equal();
-	aside {
-		.column(4,8);
-	}
-	article {
-		.column(4,8);
-	}
+.nested2, .nested3 {
+	#grid-mixin > .col-equal();
 }
 
 .first-row {
@@ -133,31 +107,23 @@ section {
 	.row(8);
 }
 
-.intro {
-	.column(12);	
-}
-
-.box {
-	.column(3,12);
+aside, article { 
+	.column(4,8);
 }
 
 // media queries for responsive design (percentage based). We only have to define the grid elements that break at set points. Note each grid will have different break points and if you use the default values below it is likely that you are doing something wrong.
 // First Media Query for Screens smaller than 960px
 @media screen and (max-width: 960px) {
-	.first {
+	.first, .second,.nu, .push-example, .box, aside, article, .nested1, .nested2 {
 		.column(6);
 	}
-	.second {
-		.column(6);
-	}
-
 	.alpha {
 		.column(1);
 	}
 	.beta {
 		.column(11,12);
 	}
-	.gamma {
+	.gamma, .mu {
 		.column(2);
 	}
 	.delta {
@@ -169,7 +135,7 @@ section {
 	.zeta {
 		.column(9,12);
 	}
-	.eta {
+	.eta, .lambda {
 		.column(4);
 	}
 	.theta {
@@ -181,126 +147,30 @@ section {
 	.kappa {
 		.column(7,12);
 	}
-	.lambda {
-		.column(4);
+	.nested3 {
+		.column(12);
 	}
-	.mu {
-	.column(2);
-	}
-	.nu {
-		.column(6);
-	}
-
 	.push-example {
-		.column(6);
 		.push(3,12);
 	}
 
-	.nested1 {
-		.column(6)
-	}
-	.nested2 {
-		.column(6);
-		.col-equal-remove(); // remove the equal column
-		#rhythmless > .rhythm-margin-bottom(1); // after the .col-equl-remove has set the margin to 0px we set it to our vertical rhythm
-	}
-	.nested3 {
-		.column(12);
-		.col-equal-remove(); // remove the equal column
-		#rhythmless > .rhythm-margin-bottom(1); // after the .col-equl-remove has set the margin to 0px we set it to our vertical rhythm
-		.col-equal();
-		aside {
-			.column(6);
-		}
-		article {
-			.column(6);
-		}
+	.nested2, .nested3 {
+		#grid-mixin > .col-equal-remove(); // remove the equal column and reset vertical rhythm
 	}
 
 	.second-row {
 		.row(6);
 	}
-		.box {
-			.column(6,12);
-		}
-	}
+}
 
 // Second Media Query for Screens smaller than 480px
 @media screen and (max-width: 480px) {
-	.first {
-		.column(12);
-	}
-	.second {
-		.column(12);
-	}
 
-	.alpha {
+	aside, article, .box, .nested1, .nested2, .first, .second, .alpha, .beta, .gamma, .delta, .epsilon, .zeta, .eta, .theta, .iota, .kappa, .lambda, .mu, .nu, .push-example  {
 		.column(12);
 	}
-	.beta {
-		.column(12);
-	}
-	.gamma {
-		.column(12);
-	}
-	.delta {
-		.column(12);
-	}
-	.epsilon {
-		.column(12);
-	}
-	.zeta {
-		.column(12);
-	}
-	.eta {
-		.column(12);
-	}
-	.theta {
-		.column(12);
-	}
-	.iota {
-		.column(12);
-	}
-	.kappa {
-		.column(12);
-	}
-	.lambda {
-		.column(12);
-	}
-	.mu {
-	.column(12);
-	}
-	.nu {
-		.column(12);
-	}
-
-	.push-example {
-		.column(12);
-	}
-
-		.nested1 {
-			.column(12)
-		}
-		.nested2 {
-			.column(12);
-		}
-		.nested3 {
-			.column(12);
-			.col-equal();
-			aside {
-				.column(12);
-			}
-			article {
-				.column(12);
-			}
-		}
 	
-
 	.second-row {
 		.row(12);
-	}
-
-	.box {
-		.column(12);
 	}
 }
