@@ -5,7 +5,7 @@ Based on the well known semantic.gs by Tyler Tate, FSG (flawless-semantics-grid)
 * responsive and fixed layouts,
 all without any unsemantic .grid_x classes in your markup. 
 
-Check out the example pages [here](http://laughingwithu.github.com/fsg/index.html).
+Check out the example pages [here](http://laughingwithu.github.com/flawless-semantics-grid/index.html).
 
 #Differences
 The most notable difference is the fact that Flawless-Semantics uses a column - gutter - column approach rather than a gutter - column - gutter approach. This solves the nesting problems I was having with Semantic.gs and also the fact that the outer most gutters where half the width of the inner gutters.
