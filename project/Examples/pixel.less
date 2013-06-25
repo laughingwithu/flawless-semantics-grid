@@ -4,70 +4,13 @@
 	/   LAYOUT   \
 ============================================================================ */
 body {
-	#grid-mixin > .widths(12);		 // make the body exactly 12 coloumns wide
-	#grid-mixin > .margin-auto();	 // center the body using margin values of auto on left and right
-	#grid-mixin > .padding-all();	 // padding all around our body using the same value as our gutters
+	#flawless > .widths(12);		 // make the body exactly 12 coloumns wide
+	#flawless > .margin-auto();	 // center the body using margin values of auto on left and right
 	#rhythmless > .rhythm-margin(1); // add a vertical rythym margin to the top and bottom
 }
 
 .page {
 	.grid();
-}
-
-header, section, footer, .intro {
-	.column(12);
-}
-
-.first, .second, .push-example, .nu {
-	.column(6);
-}
-
-.alpha {
-	.column(1);
-}
-.beta {
-	.column(11,12);
-}
-.gamma, .mu, .nested1, .nested2  {
-	.column(2);
-}
-.delta {
-	.column(10,12);
-}
-.epsilon, .box {
-	.column(3);
-}
-.zeta {
-	.column(9,12);
-}
-
-/* ----------------------------------------------------------------------------
-| 	The use of aside, article here can only be done as this is a pixel based  |
-|	layout and the values are fixed regardless of the amount of columns 	  |
-|	available. In a fluid layout this would need to be separated and use 	  |
-|	.column(4,8)															  |
----------------------------------------------------------------------------- */
-.eta, aside, article, .lambda  { 
-	.column(4);
-}
-.theta, .nested3 {
-	.column(8,12);
-}
-.iota {
-	.column(5);
-}
-.kappa {
-	.column(7,12);
-}
-
-.push-example {
-	.push(3,12);
-}
-
-.first-row {
-	.nested2, .nested3 {
-		#grid-mixin > .col-equal();
-	}
 }
 
 .first-row {
@@ -78,79 +21,112 @@ header, section, footer, .intro {
 	.row(8);
 }
 
+.column {
+	.column();	// In a Pixel grid this value only needs to be declared once
+}
+
+.alpha {
+	.column-width(1);
+}
+.beta {
+	.column-width(2);
+}
+.gamma  {
+	.column-width(3);
+}
+.delta {
+	.column-width(4);
+}
+.epsilon {
+	.column-width(5);
+}
+.zeta {
+	.column-width(6);
+}
+.eta {
+	.column-width(7);
+}
+.theta {
+	.column-width(8);
+}
+.iota {
+	.column-width(9);
+}
+.kappa {
+	.column-width(10);
+}
+.lambda {
+	.column-width(11);
+}
+.mu {
+	.column-width(12);
+}
+.push-example {
+	.push(3,12);
+}
+
+.col-equal {
+	#flawless > .col-equal();
+}
+
 /* ----------------------------------------------------------------------------	
-|	Break point for portable devices and screens smaller than 960px.		  |
+|	Break point for portable devices and screens smaller than 984px.		  |
 ---------------------------------------------------------------------------- */
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 1002px) {
 	body {
-		#grid-mixin > .widths(8);
+		#flawless > .widths(8);
 	}
 	
 	.page {
 		.grid(8);
-	}
-
-	header, section, footer, .intro {
-		.column(8);
-	}
-
-	.first, .second, .eta, .theta, .nu, .push-example, .box, .nested3 {
-		.column(4);
-	}
-	.alpha, .mu {
-		.column(1);
-	}
-	.beta {
-		.column(7);
-	}
-	.gamma, .nested1, .nested2, aside, article {
-		.column(2);
-	}
-	.delta {
-		.column(6);
-	}
-	.epsilon, .kappa, .lambda {
-		.column(3);
-	}
-	.zeta, .iota  {
-		.column(5);
-	}
-	
-	.push-example {
-		.push(2,8);
-	}
-	
-	.first-row {
-		.nested2, .nested3 {
-			#grid-mixin > .col-equal-remove(); // remove the equal column
-		}
 	}
 	.first-row {
 		.row(8);
 	}
 		
 	.second-row {
-		.row(4);
+		.row(8);
 	}
-}
 
-/* ----------------------------------------------------------------------------	
-|	Break point for portable devices and screens smaller than @portable-width.|
----------------------------------------------------------------------------- */
-@media screen and (max-width: 480px) {
-	body {
-		#grid-mixin > .widths(4);
+	.lap-half {
+		.column-width(4);
+	}
+	.lap-full {
+		.column-width(8);
+	}
+
+	.push-example {
+		.push(2,8);
 	}
 	
+	.col-equal {
+		#flawless > .col-equal-remove();
+	}
+	
+}	
+
+/* ----------------------------------------------------------------------------	
+|	Break point for portable devices and screens smaller than @portable-width.| 
+|	gutter-width / 8 ??
+---------------------------------------------------------------------------- */
+@media screen and (max-width: 666px) {
+	body {
+		#flawless > .widths(4);
+	}
 	.page {
 		.grid(4);
 	}
-
-	header, section, footer, aside, article, .box, .nested1, .nested2, .nested3, .intro, .first, .second, .alpha, .beta, .gamma, .delta, .epsilon, .zeta, .eta, .theta, .iota, .kappa, .lambda, .mu, .nu, .push-example {
-		.column(4);
-	}
-	
-	.first-row, .second-row {
+		.first-row {
 		.row(4);
+	}
+		
+	.second-row {
+		.row(4);
+	}
+	.portable-full {
+		.column-width(4);
+	}
+	.push-example {
+		.push(0);
 	}
 }

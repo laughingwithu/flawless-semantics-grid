@@ -17,6 +17,18 @@
 @column-gutter-width: 	@total-width*((@gutter-width)/@gridsystem-width);
 @p-column-gutter-width:	@total-width*(@gutter-width/@p-gridsystem-width);
 
+/* 	Global Box-Sizing
+===============================================================================
+|	While not strictly required by this Grid system it will save headaches	  |
+|	down the track :) See paul Irish's comments on this						  |
+|	http://www.paulirish.com/2012/box-sizing-border-box-ftw/				  |	
+---------------------------------------------------------------------------- */
+* {
+	-moz-box-sizing: border-box; 
+	-webkit-box-sizing: border-box; 
+	box-sizing: border-box;
+}
+	
 /* 	Grid
 ===============================================================================
 |	N.B. It is not usually a good idea to make the body a grid due to the use |
@@ -28,50 +40,61 @@
 	.row(@columns);
 	.mixin() {} // default value
 	.mixin() when (@show-grid = true) {	
-		#grid-mixin > .show-grid();
+		#flawless > .show-grid();
 	}
 	.mixin();
 }
 
 /* 	Rows
-============================================================================ */
-// Getting ready to abstract
-.row-base(){
-	display: block;
-	overflow:hidden;
-	.clearfix;
-}
-
+===============================================================================
+|	This mixin should be called as little as possible and only where needed	  |
+|	as typically unless you change the numnber of columns such in the grid	  |
+|	such as where you nest a grid, the class can be used multiple times.	  |
+|																			  |
+|	N.B. This mixin will only need to be called once for a pixel grid as the  |
+|	@column-gutter-width will always be the same, whereas the percentage in	  |
+|	a percentage grid will need to change based on its parents width.		  |
+---------------------------------------------------------------------------- */ 
 .row(@columns:@columns) {	
-	.row-base();
 	.mixin(@columns:@columns)  when (ispixel(@total-width))  {
 		width: @gridsystem-width;
 		margin-left:@column-gutter-width* -1;
 		}
 	.mixin(@columns:@columns)  when (ispercentage(@total-width))  {
 		width: @total-width + @p-column-gutter-width; // See below comment regarding @p-column-gutter-width
-		margin-left:@column-gutter-width* -1; // Technically should be @p-column-gutter-width*-1 but browser rounding breaks the layout.
+		margin-left:@p-column-gutter-width* -1; // Technically should be @p-column-gutter-width*-1 but browser rounding breaks the layout. Will be testing this further to eliminate the error this introduces.
+	}
+	.mixin(@columns);
+	overflow:hidden;
+	.clearfix;
+}
+
+/* 	Columns
+===============================================================================
+|	The .column() should only be once and then used a class together with a	  |
+|	that specifies the width of the column since provided the number of		  |
+|	columns in the grid	is not changed @column-gutter-width will not change.  |
+|																			  |
+|	N.B. This mixin will only need to be called once for a pixel grid as the  |
+|	@column-gutter-width will always be the same, whereas the percentage in	  |
+|	a percentage grid will need to change based on its parents width.		  |
+|																			  |
+---------------------------------------------------------------------------- */
+
+.column(@columns:@columns){
+	float: left;
+	.mixin(@columns:@columns)  when (ispixel(@total-width))  {
+		margin-left: @column-gutter-width;
+	}
+	.mixin(@columns:@columns)  when (ispercentage(@total-width))  {
+		margin-left: @column-gutter-width; // Technically should be @p-column-gutter-width*-1 but browser rounding breaks the layout. Will be testing this further to eliminate the error this introduces.
 	}
 	.mixin(@columns);
 }
 
-/* 	Columns
-============================================================================  */
-// Getting ready to abstract
-.column-base(){
-	display: inline;
-	float: left;
-	overflow:hidden;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-}
-
-.column(@x,@columns:@columns) {
-	.column-base();
-		margin-left: @column-gutter-width;
+.column-width(@x,@columns:@columns) {
 	.mixin(@x,@columns:@columns)  when (ispixel(@total-width))  {
-		width: (((@gutter-width+@column-width)*@x)-@gutter-width)*1px
+		width: (((@gutter-width+@column-width)*@x)-@gutter-width)*1px;
 	}
 	.mixin(@x,@columns:@columns)  when (ispercentage(@total-width))  {
 		width: @total-width*((((@gutter-width+@column-width)*@x)-@gutter-width) / @gridsystem-width);

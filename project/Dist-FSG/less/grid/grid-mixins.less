@@ -1,9 +1,9 @@
 /* 	 ________________________________________
 	/   MIXINS FOR FLAWLESS SEMANTICS GRID   \
 ===============================================================================
-|	#grid-mixin id for keeping these mixins organised						  |
+|	#flawless id for keeping these mixins organised						  |
 ---------------------------------------------------------------------------- */
-#grid-mixin {
+#flawless {
 	/* ------------------------------------------------------------------------
 	|	Widths mixin useful for making sure the widths are set correctly. 	  |
 	|	When the grid is pixel based it uses the @x and @column values to 	  |
@@ -13,7 +13,7 @@
 	.widths(@x:@columns,@columns:@columns) {
 		.mixin(@x,@columns){}
 		.mixin(@x,@columns)  when (ispixel(@total-width))  {
-			.column > .mixin(@x,@columns);
+			.column-width(@x,@columns);
 		}
 		.mixin(@x:@min-width,@columns:@max-width)  when (ispercentage(@total-width))  {
 			// mix the values around so it makes sense
@@ -24,33 +24,34 @@
 		}
 		.mixin(@x,@columns);
 	}
-	.padding-all(){
-		padding:@column-gutter-width;
+	
+	/* 	padding and margin using gutter width as values
+	======================================================================== */
+	.padding(@value:1){
+		padding-left:@column-gutter-width * @value;
+		padding-right:@column-gutter-width * @value;
 	}
-	.padding(){
-		padding-left:@column-gutter-width;
-		padding-right:@column-gutter-width;
+	.padding-left(@value:1){
+		padding-left:@column-gutter-width * @value;
 	}
-	.padding-left(){
-		padding-left:@column-gutter-width;
+	.padding-right(@value:1){
+		padding-right:@column-gutter-width * @value;
 	}
-	.padding-right(){
-		padding-right:@column-gutter-width;
-	}
-	.margin-auto() {
+	.margin-auto(@value:1) {
 		margin-left:auto;
 		margin-right:auto;
 	}
-	.margin(){
-		margin-left:@column-gutter-width;
-		margin-right:@column-gutter-width;
+	.margin(@value:1){
+		margin-left:@column-gutter-width * @value;
+		margin-right:@column-gutter-width * @value;
 	}
-	.margin-left(){
-		margin-left:@column-gutter-width;
+	.margin-left(@value:1){
+		margin-left:@column-gutter-width * @value;
 	}
-	.margin-right(){
-		margin-right:@column-gutter-width;
+	.margin-right(@value:1){
+		margin-right:@column-gutter-width * @value;
 	}
+	
 	/* 	Equal Height Mixins - Sean Steindl aka http://github.com/laughingwithu
 	======================================================================== */
 	.col-equal() {
@@ -61,11 +62,12 @@
 	/* ------------------------------------------------------------------------
 	|	Remove equal height column (useful when we do responsive design as we |
 	|	might not care if they are equal heights. Note this sets the bottom   |
-	|	padding and margin to 0 and will need to overide other styles.		  |
+	|	padding to 0 and will need to overide other styles.	This also resets  |
+	|		the bottom margin to work with our vertical rhythm.				  |
 	------------------------------------------------------------------------ */
 	.col-equal-remove() {
 		padding-bottom: 	0;
-		#rhythmless > .rhythm-margin-bottom(1); // set our margin to our vertical rhythm
+		#rhythmless > .rhythm-margin-bottom(1);
 	}
 
 	/*	Showgrid mixin by ninique at https://github.com/ninique

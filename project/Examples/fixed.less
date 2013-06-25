@@ -3,11 +3,12 @@
 // Uncomment the definition below for a percentage-based layout
 @total-width: 100%;
 
-////////////
-// LAYOUT //
-////////////
+/*	 ____________
+	/   LAYOUT   \
+============================================================================ */
 body {
-	#grid-mixin > .widths(300px, 100%); // makes the min-width of the body 300px and the max-width 100%. Note min-width won't have any effect as a percentage for obvious reasons.
+	#flawless > .widths(300px, 100%); // makes the min-width of the body 300px and the max-width 100%. Note min-width won't have any effect as a percentage for obvious reasons.
+	#rhythmless > .rhythm-margin(1); // add a vertical rythym margin to the top and bottom
 }
 
 // Fixed Element specific css
@@ -25,13 +26,12 @@ html, body {
 
 .scroll-container {
 	#rhythmless > .rhythm-margin-top(3);  
-	#rhythmless > .rhythm-margin-bottom(3); 
+	#rhythmless > .rhythm-margin-bottom(4); 
 }
 
 header, footer {
 	position: fixed;
 	background-color: white;
-	height: @rhythmic-unit*3;
 	width: 100%;
 	z-index: 1030;
 	box-shadow: 0 0 5px 5px #888;
@@ -40,63 +40,19 @@ header, footer {
 
 header {
 	top: 0;
+	height: @rhythmic-unit*3;
 }
 
 footer {
+	height: @rhythmic-unit*4;
 	bottom: 0;
-}
-
-section {
-	.column(12);
 }
 
 // End of Fixed Element specific css
 
-.intro {
-	.column(12);
-}
 
-.first, .second, .nu, .push-example {
-	.column(6);
-}
-
-.alpha {
-	.column(1);
-}
-.beta {
-	.column(11,12);
-}
-.gamma, .mu, .nested1, .nested2  {
-	.column(2);
-}
-.delta {
-	.column(10,12);
-}
-.epsilon, .box {
-	.column(3);
-}
-.zeta {
-	.column(9,12);
-}
-.eta, .lambda { 
-	.column(4);
-}
-.theta, .nested3 {
-	.column(8,12);
-}
-.iota {
-	.column(5);
-}
-.kappa {
-	.column(7,12);
-}
-
-.push-example {
-	.push(3,12);
-}
-
-.nested2, .nested3 {
-	#grid-mixin > .col-equal();
+.page {
+	.grid();
 }
 
 .first-row {
@@ -107,70 +63,106 @@ section {
 	.row(8);
 }
 
-aside, article { 
-	.column(4,8);
+.second-delta {
+	.column-width(4,8);
 }
 
-// media queries for responsive design (percentage based). We only have to define the grid elements that break at set points. Note each grid will have different break points and if you use the default values below it is likely that you are doing something wrong.
-// First Media Query for Screens smaller than 960px
-@media screen and (max-width: 960px) {
-	.first, .second,.nu, .push-example, .box, aside, article, .nested1, .nested2 {
-		.column(6);
+.first-column {
+	.column(12);
+}
+
+.second-column {
+	.column(8);
+}
+
+.alpha {
+	.column-width(1);
+}
+.beta {
+	.column-width(2);
+}
+.gamma  {
+	.column-width(3);
+}
+.delta {
+	.column-width(4);
+}
+.epsilon {
+	.column-width(5);
+}
+.zeta {
+	.column-width(6);
+}
+.eta {
+	.column-width(7);
+}
+.theta {
+	.column-width(8);
+}
+.iota {
+	.column-width(9);
+}
+.kappa {
+	.column-width(10);
+}
+.lambda {
+	.column-width(11);
+}
+.mu {
+	.column-width(12);
+}
+.push-example {
+	.push(3,12);
+}
+
+.col-equal {
+	#flawless > .col-equal();
+}
+
+/* ----------------------------------------------------------------------------	
+|	Break point for portable devices and screens smaller than 984px.		  |
+---------------------------------------------------------------------------- */
+@media screen and (max-width: 1002px) {
+	.second-row {
+		.row(12);
+		& .delta {
+			.column-width(6,12);
+		}
 	}
-	.alpha {
-		.column(1);
-	}
-	.beta {
-		.column(11,12);
-	}
-	.gamma, .mu {
-		.column(2);
-	}
-	.delta {
-		.column(10,12);
-	}
-	.epsilon {
-		.column(3);
-	}
-	.zeta {
-		.column(9,12);
-	}
-	.eta, .lambda {
-		.column(4);
-	}
-	.theta {
-		.column(8,12);
-	}
-	.iota {
-		.column(5);
-	}
-	.kappa {
-		.column(7,12);
-	}
-	.nested3 {
+
+	.second-column {
 		.column(12);
 	}
+
+	.lap-full {
+		.column-width(12);
+	}
+	
+	.lap-half  {
+		.column-width(6,12);
+	}
+
 	.push-example {
 		.push(3,12);
 	}
 
-	.nested2, .nested3 {
-		#grid-mixin > .col-equal-remove(); // remove the equal column and reset vertical rhythm
-	}
-
-	.second-row {
-		.row(6);
-	}
-}
-
-// Second Media Query for Screens smaller than 480px
-@media screen and (max-width: 480px) {
-
-	aside, article, .box, .nested1, .nested2, .first, .second, .alpha, .beta, .gamma, .delta, .epsilon, .zeta, .eta, .theta, .iota, .kappa, .lambda, .mu, .nu, .push-example  {
-		.column(12);
+	.col-equal {
+		#flawless > .col-equal-remove();
 	}
 	
-	.second-row {
-		.row(12);
+}	
+
+/* ----------------------------------------------------------------------------	
+|	Break point for portable devices and screens smaller than @portable-width.| 
+|	gutter-width / 8 ??
+---------------------------------------------------------------------------- */
+@media screen and (max-width: 666px) {
+
+	.portable-full {
+		.column-width(12);
+	}
+
+	.push-example {
+		.push(0);
 	}
 }

@@ -7,60 +7,13 @@
 	/   LAYOUT   \
 ============================================================================ */
 body {
-	#grid-mixin > .widths(300px, 1080px); // makes the min-width of the body 300px and the max-width 100%. Note min-width won't have any effect as a percentage for obvious reasons.
-	#grid-mixin > .margin-auto();	 // center the body using margin values of auto on left and right
+	#flawless > .widths(300px, 1080px); // makes the min-width of the body 300px and the max-width 100%. Note min-width won't have any effect as a percentage for obvious reasons.
+	#flawless > .margin-auto();	 // center the body using margin values of auto on left and right
 	#rhythmless > .rhythm-margin-top(1); // add a margin to the top, using a value which works nicely with our vertical rhythm
 }
 
 .page {
 	.grid();
-}
-
-header, section, footer, .intro {
-	.column(12);
-}
-
-.first, .second, .nu, .push-example {
-	.column(6);
-}
-
-.alpha {
-	.column(1);
-}
-.beta {
-	.column(11,12);
-}
-.gamma, .mu, .nested1, .nested2  {
-	.column(2);
-}
-.delta {
-	.column(10,12);
-}
-.epsilon, .box {
-	.column(3);
-}
-.zeta {
-	.column(9,12);
-}
-.eta, .lambda { 
-	.column(4);
-}
-.theta, .nested3 {
-	.column(8,12);
-}
-.iota {
-	.column(5);
-}
-.kappa {
-	.column(7,12);
-}
-
-.push-example {
-	.push(3,12);
-}
-
-.nested2, .nested3 {
-	#grid-mixin > .col-equal();
 }
 
 .first-row {
@@ -71,8 +24,60 @@ header, section, footer, .intro {
 	.row(8);
 }
 
-aside, article { 
-	.column(4,8);
+.second-delta {
+	.column-width(4,8);
+}
+
+.first-column {
+	.column(12);
+}
+
+.second-column {
+	.column(8);
+}
+
+.alpha {
+	.column-width(1);
+}
+.beta {
+	.column-width(2);
+}
+.gamma  {
+	.column-width(3);
+}
+.delta {
+	.column-width(4);
+}
+.epsilon {
+	.column-width(5);
+}
+.zeta {
+	.column-width(6);
+}
+.eta {
+	.column-width(7);
+}
+.theta {
+	.column-width(8);
+}
+.iota {
+	.column-width(9);
+}
+.kappa {
+	.column-width(10);
+}
+.lambda {
+	.column-width(11);
+}
+.mu {
+	.column-width(12);
+}
+.push-example {
+	.push(3,12);
+}
+
+.col-equal {
+	#flawless > .col-equal();
 }
 
 /* ----------------------------------------------------------------------------	
@@ -80,54 +85,31 @@ aside, article {
 ---------------------------------------------------------------------------- */
 @media screen and (max-width: 1100px) {
 	body {
-		#grid-mixin > .widths(300px, 800px); // makes the min-width of the body 300px and the max-width 100%. Note min-width won't have any effect as a percentage for obvious reasons.
+		#flawless > .widths(300px, 800px); // makes the min-width of the body 300px and the max-width 100%. Note min-width won't have any effect as a percentage for obvious reasons.
 	}
-	.first, .second,.nu, .push-example, .box, aside, article, .nested1, .nested2 {
-		.column(6);
+	
+	.second-row {
+		.row(12);
 	}
-	.alpha {
-		.column(1);
-	}
-	.beta {
-		.column(11,12);
-	}
-	.gamma, .mu {
-		.column(2);
-	}
-	.delta {
-		.column(10,12);
-	}
-	.epsilon {
-		.column(3);
-	}
-	.zeta {
-		.column(9,12);
-	}
-	.eta, .lambda {
-		.column(4);
-	}
-	.theta {
-		.column(8,12);
-	}
-	.iota {
-		.column(5);
-	}
-	.kappa {
-		.column(7,12);
-	}
-	.nested3 {
+
+	.second-column {
 		.column(12);
 	}
+
+	.lap-full {
+		.column-width(12);
+	}
+	
+	.lap-half  {
+		.column-width(6,12);
+	}
+
 	.push-example {
 		.push(3,12);
 	}
 
-	.nested2, .nested3 {
-		#grid-mixin > .col-equal-remove(); // remove the equal column and reset vertical rhythm
-	}
-
-	.second-row {
-		.row(6);
+	.col-equal {
+		#flawless > .col-equal-remove();
 	}
 }
 
@@ -136,14 +118,14 @@ aside, article {
 ---------------------------------------------------------------------------- */
 @media screen and (max-width: 820px) {
 	body {
-		#grid-mixin > .widths(300px, 600px); // makes the min-width of the body 300px and the max-width 100%. Note min-width won't have any effect as a percentage for obvious reasons.
+		#flawless > .widths(300px, 600px); // makes the min-width of the body 300px and the max-width 100%. Note min-width won't have any effect as a percentage for obvious reasons.
 	}
 	
-	header, section, footer, aside, article, .box, .nested1, .nested2, .nested3, .intro, .first, .second, .alpha, .beta, .gamma, .delta, .epsilon, .zeta, .eta, .theta, .iota, .kappa, .lambda, .mu, .nu, .push-example  {
-		.column(12)
+	.portable-full {
+		.column-width(12);
 	}
-	
-	.second-row {
-		.row(12);
+
+	.push-example {
+		.push(0);
 	}
 }

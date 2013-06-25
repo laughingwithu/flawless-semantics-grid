@@ -1,0 +1,3 @@
+Utilises the current method used by Flawless Semantics Grid (FSG) though significantly optimised and is the direction where I am probably going to take FSG. The downside to this method is that you end up having to define one grid element more than the padding based method and when you use percentages there is a more potential for rounding issues.
+
+Will be testing other methods and showing them off here for testing...
