@@ -4,6 +4,7 @@
 // Vertical Rhythm for LESS
 // http://paulgb.github.com/rhythmless/
 // (C) Paul Butler (MIT LICENSE)
+// Adapted by Sean Steindl aka Laughingwithu
 
 // global defaults, these can (and usually should) be overwritten by
 // the file that includes this
@@ -19,6 +20,9 @@
 //	@h6-size:1.0; // default 1.0
 //	@small-size:0.8; // default 0.8
 //	@sup-sub-size:.65; // default .65
+
+// Work out what the Line-height ratio is
+@line-height-ratio: @rhythmic-unit / @rhythmic-fontsize ;
 
 #rhythmless {
     // the base mixin used by all block-level elements within the
@@ -103,27 +107,27 @@
     .rhythm-container(@font-size) {
         @margin: round(@font-size / 2);
 
-        h1 {
+        h1, alpha {
             #rhythmless > .rhythm(round(@font-size * @h1-size), @margin);
         }
 
-        h2 {
+        h2, beta {
             #rhythmless > .rhythm(round(@font-size * @h2-size), @margin);
         }
 
-        h3 {
+        h3, gamma {
             #rhythmless > .rhythm(round(@font-size * @h3-size), @margin);
         }
 		
-		h4 {
+		h4, delta {
             #rhythmless > .rhythm(round(@font-size * @h4-size), @margin);
         }
 		
-		h5 {
+		h5, epsilon {
             #rhythmless > .rhythm(round(@font-size * @h5-size), @margin);
         }
 		
-		h6 {
+		h6, zeta {
             #rhythmless > .rhythm(round(@font-size * @h6-size), @margin);
         }
 		
@@ -139,24 +143,24 @@
     // apply consistent rhythm by using the rhythmic-unit as a base for 
     // determining padding and margin heights. Note that the values are
 	// factors not pixel values and works best with whole numbers.
-	.rhythm-padding(@value:1){
+	.padding-ends(@value:1){
 		padding-top:@value * @rhythmic-unit;
 		padding-bottom:@value * @rhythmic-unit;
 	}
-	.rhythm-padding-top(@value:1){
-		padding-top:@@value * @rhythmic-unit;
+	.padding-top(@value:1){
+		padding-top:@value * @rhythmic-unit;
 	}
-	.rhythm-padding-bottom(@value:1){
+	.padding-bottom(@value:1){
 		padding-bottom:@value * @rhythmic-unit;
 	}
-	.rhythm-margin(@value:1){
+	.margin-ends(@value:1){
 		margin-top:@value * @rhythmic-unit;
 		margin-bottom:@value * @rhythmic-unit;
 	}
-	.rhythm-margin-top(@value:1){
+	.margin-top(@value:1){
 		margin-top:@value * @rhythmic-unit;
 	}
-	.rhythm-margin-bottom(@value:1){
+	.margin-bottom(@value:1){
 		margin-bottom:@value * @rhythmic-unit;
 	}
 }  
