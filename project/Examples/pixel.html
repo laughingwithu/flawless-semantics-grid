@@ -1,0 +1,178 @@
+ <!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Flawless Semantics | Showoff - Pixel Based Grid</title>
+
+    <!-- Stylesheets -->
+	<link rel="stylesheet" href="pixel.less" type="text/less" media="screen" />
+	<!--link rel="stylesheet" href="grid-showoff.css" type="text/css" media="screen" /-->
+	
+    <!-- Scripts -->
+	<script src="./js/less-1.4.0.min.js" type="text/javascript"> less = { env: "development"}; </script>
+	<!--[if lt IE 9]><script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body>
+<div class="page">
+<header id="top" class="column mu lap-full portable-full">
+	<h1><a href="https://github.com/laughingwithu/Flawless-Semantics-grid">Flawless Semantics</a></h1>
+</header>
+<section id="Basic" class="column mu lap-full portable-full">
+	<div class="first-row">
+		<div class="column mu lap-full portable-full intro">
+			<h3 class="show">Basic</h3>
+			<code>12 column row</code>
+		</div>
+		<div class="column zeta lap-half portable-full style">
+			<code>6</code>
+		</div>
+		<div class="column zeta lap-half portable-full style">
+			<code>6<br></code>
+		</div>
+	</div>
+</section>
+<section id="Multiple-rows" class="column mu lap-full portable-full">
+	<div class="first-row">
+		<div class="column mu lap-full portable-full intro">
+			<h3 class="show">Multiple rows</h3>
+			<code>12 column row</code>
+		</div>
+		<div class="column alpha lap-half portable-full style">
+			<code>1</code>
+		</div>
+		<div class="column lambda lap-half portable-full style">
+			<code>11</code>
+		</div>
+		<div class="column beta lap-half portable-full style">
+			<code>2</code>
+		</div>
+		<div class="column kappa lap-half portable-full style">
+			<code>10</code>
+		</div>
+		<div class="column gamma lap-full portable-full style">
+			<code>3</code>
+		</div>
+		<div class="column iota lap-full portable-full style">
+			<code>9</code>
+		</div>
+		<div class="column delta lap-half portable-full style">
+			<code>4</code>
+		</div>
+		<div class="column theta lap-half portable-full style">
+			<code>8</code>
+		</div>
+		<div class="column epsilon lap-full portable-full style">
+			<code>5</code>
+		</div>
+		<div class="column eta lap-full portable-full style">
+			<code>7</code>
+		</div>
+		<div class="column zeta lap-full portable-full style">
+			<code>6</code>
+		</div>
+		<div class="column zeta lap-full portable-full style">
+			<code>6<br></code>
+		</div>
+		<div class="column delta lap-half portable-full style">
+			<code>4</code>
+		</div>
+		<div class="column gamma lap-half portable-full style">
+			<code>3</code>
+		</div>
+		<div class="column epsilon lap-full portable-full style">
+			<code>5</code>
+		</div>
+	</div>
+</section>
+<section id="Shifts" class="column mu lap-full portable-full">
+	<div class="first-row">
+		<div class="column mu lap-full portable-full intro">
+			<h3 class="show">Shifting column</h3>
+			<code>12 column row</code>
+		</div>
+		<div class="column zeta lap-half portable-full style push-example">
+			<code>6 columns pushed 3</code>
+		</div>
+	</div>
+</section>
+
+<section id="nesting" class="column mu lap-full portable-full">
+	<div class="first-row ">
+		<div class="column mu lap-full portable-full intro">
+			<h3 class="show">Nesting column</h3>
+			<code>12 column row</code>
+			<p>Note that the .col-equal(); mixin does not work with automatic rows and .col-equal-remove(); can be used to remove the equal heights in media queries.</p>
+		</div>
+		<div class="column beta lap-half portable-full portable-full style">
+			<code>2</br>No equal height mixin applied</code>
+		</div>
+		<div class="column beta lap-half portable-full style col-equal">
+			<code>2<br>.col-equal();</code>
+		</div>
+		<div class="column theta lap-full portable-full style col-equal">
+			<code>8<br>.col-equal();</code>
+			<div class="second-row">
+				<aside class="column delta lap-half portable-full">
+					<code>4</code>
+				</aside>
+				<article class="column delta lap-half portable-full">
+					<code>4</code>
+				</article>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<section id="auto" class="column mu lap-full portable-full">
+	<div class="first-row">
+	<div class="column mu lap-full portable-full intro">
+		<h3 class="show">Automatic rows</h3>
+		<code>12 column row</code>
+	</div>
+	<div class="column gamma lap-half portable-full style">
+    <code>1</code>
+	</div>
+	<div class="column gamma lap-half portable-full style">
+		<code>2</code>
+	</div>
+	<div class="column gamma lap-half portable-full style">
+		<code>3</code>
+	</div>
+	<div class="column gamma lap-half portable-full style">
+		<code>4</code>
+	</div>
+	<div class="column gamma lap-half portable-full style">
+		<code>5</code>
+	</div>
+	<div class="column gamma lap-half portable-full style">
+		<code>6</code>
+	</div>
+	<div class="column gamma lap-half portable-full style">
+		<code>7</code>
+	</div>
+	<div class="column gamma lap-half portable-full style">
+		<code>8</code>
+	</div>
+	<div class="column gamma lap-half portable-full style">
+		<code>9</code>
+	</div>
+	<div class="column gamma lap-half portable-full style">
+		<code>10</code>
+	</div>
+	<div class="column gamma lap-half portable-full style">
+		<code>11</code>
+	</div>
+	<div class="column gamma lap-half portable-full style">
+		<code>12</code>
+	</div>
+  </div>
+</section>
+<footer class="column mu lap-full portable-full">
+	<h3 class="show">And that's all folks!</h3>
+	<p><a href="http://github.com/laughingwithu/Flawless-Semantics-grid">On Github!</a> | <a href="index.html">About</a> | <a href="pixel.html">Pixel</a> | <a href="fluid.html">Fluid</a> | <a href="max-width.html">Max-width</a> | <a href="fixed.html">Fixed Element</a></p>
+</footer>
+</div>
+</body>
+</html>

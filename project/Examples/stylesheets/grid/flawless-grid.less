@@ -1,0 +1,117 @@
+/* 	 ________________________________
+	/   Flawless Semantics - Grid    \
+===============================================================================
+|	Adapted by Sean Steindl aka http://github.com/laughingwithu from the	  |
+|	Semantic.gs 															  |
+---------------------------------------------------------------------------- */
+/* 	Grid Specific Calculations - These generally should be left alone
+===============================================================================
+|	These values are calculated based on the values already provided in 	  |
+|	config.less. The Values with @p are for the percentage grid and the other |
+|	values are for the pixel based grid. The math is self explanatory but if  |
+|	any one is interested or has a questions  feel free to ask.				  |
+---------------------------------------------------------------------------- */
+@gridsystem-width: 		(@column-width*@columns) + (@gutter-width*@columns) * 1px;
+@p-gridsystem-width: 	@gridsystem-width - @gutter-width;
+@total-width: 			@gridsystem-width; // Set @total-width to a % for a fluid layout
+@column-gutter-width: 	@total-width*((@gutter-width)/@gridsystem-width);
+@p-column-gutter-width:	@total-width*(@gutter-width/@p-gridsystem-width);
+
+/* 	Global Box-Sizing
+===============================================================================
+|	While not strictly required by this Grid system it will save headaches	  |
+|	down the track :) See paul Irish's comments on this						  |
+|	http://www.paulirish.com/2012/box-sizing-border-box-ftw/				  |	
+---------------------------------------------------------------------------- */
+* {
+	-moz-box-sizing: border-box; 
+	-webkit-box-sizing: border-box; 
+	box-sizing: border-box;
+}
+	
+/* 	Grid
+===============================================================================
+|	N.B. It is not usually a good idea to make the body a grid due to the use |
+|	of the overflow property... unless that is the effect you want. 		  |
+|	(eg. single page websites with a fixed header and where navigation is by  | 
+|	anchors.)																  |
+---------------------------------------------------------------------------- */ 
+.grid(@columns:@columns){
+	.row(@columns);
+	.mixin() {} // default value
+	.mixin() when (@show-grid = true) {	
+		#flawless > .show-grid();
+	}
+	.mixin();
+}
+
+/* 	Rows
+===============================================================================
+|	This mixin should be called as little as possible and only where needed	  |
+|	as typically unless you change the numnber of columns such in the grid	  |
+|	such as where you nest a grid, the class can be used multiple times.	  |
+|																			  |
+|	N.B. This mixin will only need to be called once for a pixel grid as the  |
+|	@column-gutter-width will always be the same, whereas the percentage in	  |
+|	a percentage grid will need to change based on its parents width.		  |
+---------------------------------------------------------------------------- */ 
+.row(@columns:@columns) {	
+	.mixin(@columns:@columns)  when (ispixel(@total-width))  {
+		width: @gridsystem-width;
+		margin-left:@column-gutter-width* -1;
+		}
+	.mixin(@columns:@columns)  when (ispercentage(@total-width))  {
+		width: @total-width + @p-column-gutter-width; // See below comment regarding @p-column-gutter-width
+		margin-left:@p-column-gutter-width* -1; // Technically should be @p-column-gutter-width*-1 but browser rounding breaks the layout. Will be testing this further to eliminate the error this introduces.
+	}
+	.mixin(@columns);
+	overflow:hidden;
+	.clearfix;
+}
+
+/* 	Columns
+===============================================================================
+|	The .column() should only be once and then used a class together with a	  |
+|	that specifies the width of the column since provided the number of		  |
+|	columns in the grid	is not changed @column-gutter-width will not change.  |
+|																			  |
+|	N.B. This mixin will only need to be called once for a pixel grid as the  |
+|	@column-gutter-width will always be the same, whereas the percentage in	  |
+|	a percentage grid will need to change based on its parents width.		  |
+|																			  |
+---------------------------------------------------------------------------- */
+
+.column(@columns:@columns){
+	float: left;
+	.mixin(@columns:@columns)  when (ispixel(@total-width))  {
+		margin-left: @column-gutter-width;
+	}
+	.mixin(@columns:@columns)  when (ispercentage(@total-width))  {
+		margin-left: @column-gutter-width; // Technically should be @p-column-gutter-width*-1 but browser rounding breaks the layout. Will be testing this further to eliminate the error this introduces.
+	}
+	.mixin(@columns);
+}
+
+.column-width(@x,@columns:@columns) {
+	.mixin(@x,@columns:@columns)  when (ispixel(@total-width))  {
+		width: (((@gutter-width+@column-width)*@x)-@gutter-width)*1px;
+	}
+	.mixin(@x,@columns:@columns)  when (ispercentage(@total-width))  {
+		width: @total-width*((((@gutter-width+@column-width)*@x)-@gutter-width) / @gridsystem-width);
+	}
+	.mixin(@x,@columns);
+}
+
+/* 	Push
+============================================================================  */
+.push(@offset:1,@columns:@columns)  {
+	.mixin(@offset:1,@columns:@columns)  when (ispixel(@total-width))  {
+		@calculated-column-width: (((@gutter-width+@column-width)*@offset)-@gutter-width)*1px;
+		margin-left: @calculated-column-width+(@column-gutter-width*2);
+	}
+	.mixin(@offset:1,@columns:@columns)  when (ispercentage(@total-width))  {
+		@calculated-column-width: @total-width*((((@gutter-width+@column-width)*@offset)-@gutter-width) / @gridsystem-width);
+		margin-left: @calculated-column-width+(@column-gutter-width*2);
+	}
+	.mixin(@offset,@columns);
+}
