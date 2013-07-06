@@ -1,0 +1,37 @@
+*, *:before, *:after {-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+body {
+  width:960px;
+  margin:auto;
+}
+
+.row{
+  margin-left:-20px;
+  overflow:hidden;
+  clear:both;
+}
+.grid{
+  float:left;
+  margin-left:20px;
+}
+
+.grid-right{
+  float:right;
+  margin-left:20px;
+}
+
+.box{
+  width:225px;
+}
+
+.content {
+  width:960px;
+}
+
+.style {
+  background-color: #ddd;
+  border: 1px solid #999;
+  margin-bottom: 20px;
+}
+
+

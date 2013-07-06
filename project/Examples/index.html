@@ -1,0 +1,38 @@
+ <!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Flawless Semantics | Showoff - Pixel Based Grid</title>
+
+    <!-- Stylesheets -->
+	<link rel="stylesheet" href="pixel.less" type="text/less" media="screen" />
+	<!--link rel="stylesheet" href="grid-showoff.css" type="text/css" media="screen" /-->
+	
+    <!-- Scripts -->
+	<script src="./js/less-1.4.0.min.js" type="text/javascript"> less = { env: "development"}; </script>
+	<!--[if lt IE 9]><script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body>
+<div class="page">
+<header id="top" class="column mu lap-full portable-full">
+	<h1><a href="https://github.com/laughingwithu/Flawless-Semantics-grid">Flawless Semantics</a></h1>
+</header>
+<section id="About" class="column eta lap-full portable-full intro">
+	<p>Based on the well known semantic.gs by Tyler Tate, Flawless Semantics shares many of the same goals that semantic.gs such as allowing:</p>
+	<ol>
+	<li>column, gutter widths and the number of columns to be set;</li>
+	<li>switching between pixel and percentage based layouts with only a few minor amendments;</li>
+	<li>allows for responsive, adaptive and fixed layouts, all without forcing any unsemantic classes on you.</li>
+	</ol>
+	<p>As is evident from the examples provided, unlike semantic.gs this grid uses a column-gutter-column approach, I have provided as many examples as  I can on this page and there a more examples via the links found at the bottom of the page. There is no need for a omega classes as each row is created exactly one gutter width larger to accommodate and hide the extra gutter.</p>
+	<p>When Semantic isn't great... well in developing this framework from what arguably is the most semantic grid system (semantic.gs). I started realising the areas where it could be optimised and errors corrected are due in a large part to the nature of semantic naming and the limits of current pre-processors.  My biggest gripe is that  you either ended up with long trailing comma-delimited selectors that make editing harder than it should be or you have properties repeated over and over leading to css bloat when they only really need to be declared once (for an example just have a look at the version 1.1.3 and the css it produces). Further, it is arguable that any name which describes the purpose of a html element is semantic and as Harry Roberts of XXXXXXXX explains the grid merely acts as a shelf for real content to fit into. To this end Flawless Semantics as ironic as it is, attempts to find a compromise between being semantic and being sensible.</p>
+	<p>To find out more about Flawless please see the readme located <a href="https://github.com/laughingwithu/Flawless-grid">here</a></p>
+</section>
+<footer class="column mu lap-full portable-full">
+	<h3 class="show">And that's all folks!</h3>
+	<p><a href="http://github.com/laughingwithu/Flawless-Semantics-grid">On Github!</a> | <a href="index.html">About</a> | <a href="pixel.html">Pixel</a> | <a href="fluid.html">Fluid</a> | <a href="max-width.html">Max-width</a> | <a href="fixed.html">Fixed Element</a></p>
+</footer>
+</div>
+</body>
+</html>
