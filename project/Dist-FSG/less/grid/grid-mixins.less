@@ -27,7 +27,7 @@
 	
 	/* 	padding and margin using gutter width as values
 	======================================================================== */
-	.padding(@value:1){
+	.padding-sides(@value:1){
 		padding-left:@column-gutter-width * @value;
 		padding-right:@column-gutter-width * @value;
 	}
@@ -41,7 +41,7 @@
 		margin-left:auto;
 		margin-right:auto;
 	}
-	.margin(@value:1){
+	.margin-sides(@value:1){
 		margin-left:@column-gutter-width * @value;
 		margin-right:@column-gutter-width * @value;
 	}
@@ -67,7 +67,7 @@
 	------------------------------------------------------------------------ */
 	.col-equal-remove() {
 		padding-bottom: 	0;
-		#rhythmless > .rhythm-margin-bottom(1);
+		#rhythmless > .margin-bottom(1);
 	}
 
 	/*	Showgrid mixin by ninique at https://github.com/ninique
