@@ -1,7 +1,6 @@
 @import 'stylesheets/config.less';
 
-// Uncomment the definition below for a percentage-based layout
-@total-width: 100%;
+@total-width: 100%; // this makes this layout percentage based
 
 /*	 ____________
 	/   LAYOUT   \
@@ -9,9 +8,8 @@
 body {
 	#flawless > .widths(300px, 1080px); // makes the min-width of the body 300px and the max-width 100%. Note min-width won't have any effect as a percentage for obvious reasons.
 	#flawless > .margin-auto();	 // center the body using margin values of auto on left and right
-	#rhythmless > .rhythm-margin-top(1); // add a margin to the top, using a value which works nicely with our vertical rhythm
+	#rhythmless > .margin-top(1); // add a margin to the top, using a value which works nicely with our vertical rhythm
 }
-
 .page {
 	.grid();
 }
@@ -19,23 +17,18 @@ body {
 .first-row {
 	.row(12);
 }
-	
 .second-row {
 	.row(8);
 }
-
 .second-delta {
 	.column-width(4,8);
 }
-
 .first-column {
 	.column(12);
 }
-
 .second-column {
 	.column(8);
 }
-
 .alpha {
 	.column-width(1);
 }
@@ -75,7 +68,6 @@ body {
 .push-example {
 	.push(3,12);
 }
-
 .col-equal {
 	#flawless > .col-equal();
 }
@@ -87,27 +79,21 @@ body {
 	body {
 		#flawless > .widths(300px, 800px); // makes the min-width of the body 300px and the max-width 100%. Note min-width won't have any effect as a percentage for obvious reasons.
 	}
-	
 	.second-row {
 		.row(12);
 	}
-
 	.second-column {
 		.column(12);
 	}
-
 	.lap-full {
 		.column-width(12);
 	}
-	
 	.lap-half  {
 		.column-width(6,12);
 	}
-
 	.push-example {
 		.push(3,12);
 	}
-
 	.col-equal {
 		#flawless > .col-equal-remove();
 	}
@@ -120,11 +106,9 @@ body {
 	body {
 		#flawless > .widths(300px, 600px); // makes the min-width of the body 300px and the max-width 100%. Note min-width won't have any effect as a percentage for obvious reasons.
 	}
-	
 	.portable-full {
 		.column-width(12);
 	}
-
 	.push-example {
 		.push(0);
 	}

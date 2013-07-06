@@ -6,25 +6,20 @@
 body {
 	#flawless > .widths(12);		 // make the body exactly 12 coloumns wide
 	#flawless > .margin-auto();	 // center the body using margin values of auto on left and right
-	#rhythmless > .rhythm-margin(1); // add a vertical rythym margin to the top and bottom
+	#rhythmless > .margin-ends(1); // add a vertical rythym margin to the top and bottom
 }
-
 .page {
 	.grid();
 }
-
 .first-row {
 	.row(12);
 }
-	
 .second-row {
 	.row(8);
 }
-
 .column {
-	.column();	// In a Pixel grid this value only needs to be declared once
+	.column();	// In a pixel grid this value only needs to be declared once
 }
-
 .alpha {
 	.column-width(1);
 }
@@ -64,50 +59,42 @@ body {
 .push-example {
 	.push(3,12);
 }
-
 .col-equal {
 	#flawless > .col-equal();
 }
 
-/* ----------------------------------------------------------------------------	
-|	Break point for portable devices and screens smaller than 984px.		  |
+/* ----------------------------------------------------------------------------
+|	Break point for portable devices and screens smaller than 985px.		  |
 ---------------------------------------------------------------------------- */
 @media screen and (max-width: 1002px) {
 	body {
 		#flawless > .widths(8);
 	}
-	
 	.page {
 		.grid(8);
 	}
 	.first-row {
 		.row(8);
-	}
-		
+	}	
 	.second-row {
 		.row(8);
 	}
-
 	.lap-half {
 		.column-width(4);
 	}
 	.lap-full {
 		.column-width(8);
 	}
-
 	.push-example {
 		.push(2,8);
 	}
-	
 	.col-equal {
 		#flawless > .col-equal-remove();
 	}
-	
 }	
 
 /* ----------------------------------------------------------------------------	
-|	Break point for portable devices and screens smaller than @portable-width.| 
-|	gutter-width / 8 ??
+|	Break point for portable devices and screens smaller than 650px.		  | 
 ---------------------------------------------------------------------------- */
 @media screen and (max-width: 666px) {
 	body {
@@ -118,8 +105,7 @@ body {
 	}
 		.first-row {
 		.row(4);
-	}
-		
+	}	
 	.second-row {
 		.row(4);
 	}

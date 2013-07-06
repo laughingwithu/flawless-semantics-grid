@@ -1,3 +1,15 @@
+#Release 1.1.4 - TBA
+* updated less to version 1.1.4
+* reworked grid system to allow for greater reusability of code
+* abstracted the .column mixin into two separate ones (.column and .column-width) to allow for a 40& reduction in css bloat
+* mixins to control padding and margins
+* separated grid from examples
+* improved documentation and readability of code
+* added sass and Stylus versions
+* implemented sensible defaults
+* reworked examples to better reflect best practice and my current way of styling
+
+
 #Release 1.1.3 — May 11, 2013
 
 * refactored code and optimised

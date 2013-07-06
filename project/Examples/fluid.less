@@ -1,40 +1,32 @@
 @import 'stylesheets/config.less';
 
-// Uncomment the definition below for a percentage-based layout
-@total-width: 100%;
+@total-width: 100%; // this makes this layout percentage based
 
 /*	 ____________
 	/   LAYOUT   \
 ============================================================================ */
 body {
 	#flawless > .widths(300px, 100%); // makes the min-width of the body 300px and the max-width 100%. Note min-width won't have any effect as a percentage for obvious reasons.
-	#rhythmless > .rhythm-margin(1); // add a vertical rythym margin to the top and bottom
+	#rhythmless > .margin-ends(1); // add a vertical rythym margin to the top and bottom
 }
-
 .page {
 	.grid();
 }
-
 .first-row {
 	.row(12);
 }
-	
 .second-row {
 	.row(8);
 }
-
 .second-delta {
 	.column-width(4,8);
 }
-
 .first-column {
 	.column(12);
 }
-
 .second-column {
 	.column(8);
 }
-
 .alpha {
 	.column-width(1);
 }
@@ -74,51 +66,43 @@ body {
 .push-example {
 	.push(3,12);
 }
-
 .col-equal {
 	#flawless > .col-equal();
 }
 
 /* ----------------------------------------------------------------------------	
-|	Break point for portable devices and screens smaller than 984px.		  |
+|	Break point for portable devices and screens smaller than 985px.		  |
 ---------------------------------------------------------------------------- */
 @media screen and (max-width: 1002px) {
 
 	.second-row {
 		.row(12);
 	}
-
 	.second-column {
 		.column(12);
 	}
-
 	.lap-full {
 		.column-width(12);
 	}
-	
 	.lap-half  {
 		.column-width(6,12);
 	}
-
 	.push-example {
 		.push(3,12);
 	}
-
 	.col-equal {
 		#flawless > .col-equal-remove();
 	}
 }	
 
 /* ----------------------------------------------------------------------------	
-|	Break point for portable devices and screens smaller than @portable-width.| 
-|	gutter-width / 8 ??
+|	Break point for portable devices and screens smaller than 650px.		  | 
 ---------------------------------------------------------------------------- */
 @media screen and (max-width: 666px) {
 
 	.portable-full {
 		.column-width(12);
 	}
-
 	.push-example {
 		.push(0);
 	}
