@@ -59,10 +59,18 @@
 	.mixin(@columns:@columns)  when (ispixel(@total-width))  {
 		width: @gridsystem-width;
 		margin-left:@column-gutter-width* -1;
+		[dir="rtl"] & {
+			margin-left: 0;
+			margin-right: @column-gutter-width* -1;
 		}
+	}
 	.mixin(@columns:@columns)  when (ispercentage(@total-width))  {
 		width: @total-width + @p-column-gutter-width; // See below comment regarding @p-column-gutter-width
 		margin-left:@p-column-gutter-width* -1; // Technically should be @p-column-gutter-width*-1 but browser rounding breaks the layout. Will be testing this further to eliminate the error this introduces.
+		[dir="rtl"] & {
+			margin-left: 0;
+			margin-right: @p-column-gutter-width* -1;
+		}
 	}
 	.mixin(@columns);
 	overflow:hidden;
@@ -83,11 +91,22 @@
 
 .column(@columns:@columns){
 	float: left;
+	[dir="rtl"] & {
+		float: right;
+	}
 	.mixin(@columns:@columns)  when (ispixel(@total-width))  {
 		margin-left: @column-gutter-width;
+		[dir="rtl"] & {
+			margin-left: 0;
+			margin-right: @column-gutter-width;
+		}
 	}
 	.mixin(@columns:@columns)  when (ispercentage(@total-width))  {
 		margin-left: @column-gutter-width; // Technically should be @p-column-gutter-width*-1 but browser rounding breaks the layout. Will be testing this further to eliminate the error this introduces.
+		[dir="rtl"] & {
+			margin-left: 0;
+			margin-right: @column-gutter-width;
+		}
 	}
 	.mixin(@columns);
 }
@@ -108,10 +127,18 @@
 	.mixin(@offset:1,@columns:@columns)  when (ispixel(@total-width))  {
 		@calculated-column-width: (((@gutter-width+@column-width)*@offset)-@gutter-width)*1px;
 		margin-left: @calculated-column-width+(@column-gutter-width*2);
+		[dir="rtl"] & {
+			margin-left: 0;
+			margin-right: @calculated-column-width+(@column-gutter-width*2);
+		}
 	}
 	.mixin(@offset:1,@columns:@columns)  when (ispercentage(@total-width))  {
 		@calculated-column-width: @total-width*((((@gutter-width+@column-width)*@offset)-@gutter-width) / @gridsystem-width);
 		margin-left: @calculated-column-width+(@column-gutter-width*2);
+		[dir="rtl"] & {
+			margin-left: 0;
+			margin-right: @calculated-column-width+(@column-gutter-width*2);
+		}
 	}
 	.mixin(@offset,@columns);
 }
